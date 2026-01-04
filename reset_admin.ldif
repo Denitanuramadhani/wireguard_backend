@@ -1,0 +1,4 @@
+dn: cn=admin,dc=example,dc=com
+changetype: modify
+replace: userPassword
+userPassword: {SSHA}iq/XbMDO1FDIQJkWAx2Jt9UkG7NNlifO

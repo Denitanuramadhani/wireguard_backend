@@ -1,0 +1,5 @@
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}Fe0czDyLN2KbYoNcwcM1PIyXr4Rdedh6
+

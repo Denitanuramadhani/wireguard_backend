@@ -1,0 +1,13 @@
+dn: uid=admin2,ou=people,dc=example,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: top
+cn: admin2
+sn: admin
+uid: admin2
+uidNumber: 2001
+gidNumber: 2001
+homeDirectory: /home/admin2
+loginShell: /bin/bash
+userPassword: 12345
+

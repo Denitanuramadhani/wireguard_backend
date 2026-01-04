@@ -1,0 +1,5 @@
+dn: uid=denita,ou=people,dc=example,dc=com
+changetype: modify
+replace: userPassword
+userPassword: {SSHA}vk2e/jaqmupdm2ClsA1MQLFof3NbvQEX
+

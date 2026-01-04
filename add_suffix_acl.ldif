@@ -1,0 +1,5 @@
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+add: olcAccess
+olcAccess: {2}to dn.base="dc=example,dc=com" by dn.exact="cn=admin,dc=example,dc=com" write by * read
+
