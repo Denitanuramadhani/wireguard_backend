@@ -1,0 +1,17 @@
+# LDIF file untuk update existing users dengan wireguardUser objectClass
+# Usage: ldapmodify -x -D "cn=admin,dc=example,dc=com" -w <password> -f update_existing_users.ldif
+
+# Update user denita (contoh)
+dn: uid=denita,ou=people,dc=example,dc=com
+changetype: modify
+add: objectClass
+objectClass: wireguardUser
+-
+add: wireguardEnabled
+wireguardEnabled: FALSE
+-
+add: maxWireguardDevices
+maxWireguardDevices: 3
+
+# Tambahkan entry untuk setiap user yang ada
+# Copy-paste dan ganti uid=denita dengan username yang sesuai

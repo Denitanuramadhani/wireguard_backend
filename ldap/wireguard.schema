@@ -1,0 +1,21 @@
+# wireguard.schema
+# Custom schema untuk WireGuard VPN Portal
+# OID: 1.3.6.1.4.1.99999 (Private Enterprise Number - ganti dengan OID Anda sendiri jika perlu)
+
+attributetype ( 1.3.6.1.4.1.99999.1.1.1 NAME 'wireguardEnabled'
+    DESC 'Enable/disable WireGuard VPN access for user'
+    EQUALITY booleanMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+    SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.99999.1.1.2 NAME 'maxWireguardDevices'
+    DESC 'Maximum number of WireGuard devices allowed for user'
+    EQUALITY integerMatch
+    SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+    SINGLE-VALUE )
+
+objectclass ( 1.3.6.1.4.1.99999.1.1.1 NAME 'wireguardUser'
+    DESC 'WireGuard user extension'
+    SUP top
+    AUXILIARY
+    MAY ( wireguardEnabled $ maxWireguardDevices ) )

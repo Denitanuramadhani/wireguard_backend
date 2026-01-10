@@ -1,7 +1,13 @@
 from ldap3 import Server, Connection, ALL
 from app.config import LDAP_SERVER, LDAP_USER_DN
+from app.logger import logger
 
-def ldap_authenticate(username: str, password: str):
+def ldap_authenticate(username: str, password: str) -> bool:
+    """
+    Authenticate user dengan LDAP
+    Returns True jika credentials valid
+    Note: Tidak check wireguardEnabled di sini, check dilakukan setelah login
+    """
     try:
         server = Server(LDAP_SERVER, get_info=ALL)
 
@@ -17,5 +23,5 @@ def ldap_authenticate(username: str, password: str):
         return True
 
     except Exception as e:
-        print("[LDAP ERROR] ->", e)
+        logger.error(f"[LDAP AUTH ERROR] {username}: {e}")
         return False

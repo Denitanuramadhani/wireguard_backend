@@ -3,3 +3,9 @@ uvicorn
 ldap3
 qrcode
 python-multipart
+mysql-connector-python
+pymysql
+python-dotenv
+python-jose[cryptography]
+fastapi-limiter
+redis

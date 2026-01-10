@@ -1,44 +1,36 @@
-import os
+"""
+WireGuard Key Generation and Config Generation
+"""
+
 import subprocess
 import qrcode
-from app.config import WG_SERVER_PUBLIC_KEY, WG_ENDPOINT
-
-BASE_DIR = "generated_configs"
-os.makedirs(BASE_DIR, exist_ok=True)
+import base64
+from io import BytesIO
+from datetime import datetime, timedelta
+from app.config import WG_SERVER_PUBLIC_KEY, WG_ENDPOINT, QR_CODE_EXPIRATION_MINUTES
 
 # ========================
 # GENERATE WIREGUARD KEYS
 # ========================
 def generate_keypair():
+    """
+    Generate WireGuard keypair
+    Returns (private_key, public_key)
+    """
     private_key = subprocess.check_output(["wg", "genkey"]).decode().strip()
     public_key = subprocess.check_output(["wg", "pubkey"], input=private_key.encode()).decode().strip()
     return private_key, public_key
 
 # ========================
-# SAVE CONFIG FILE
+# BUILD CLIENT CONFIG TEXT
 # ========================
-def save_config(username, config_text):
-    path = f"{BASE_DIR}/{username}.conf"
-    with open(path, "w") as f:
-        f.write(config_text)
-
-# ========================
-# ADD PEER TO SERVER
-# ========================
-def add_peer_to_wg(public_key: str, allowed_ip: str):
-    subprocess.run([
-        "sudo", "wg", "set", "wg0",
-        "peer", public_key,
-        "allowed-ips", allowed_ip
-    ], check=True)
-
-# ========================
-# BUILD CLIENT CONFIG
-# ========================
-def generate_client_config(username, client_ip):
-    private_key, public_key = generate_keypair()
-
+def generate_client_config_text(private_key: str, public_key: str, client_ip: str) -> str:
+    """
+    Generate WireGuard client config text
+    Returns config text string
+    """
     config_text = f"""# ClientPublicKey = {public_key}
+# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 [Interface]
 PrivateKey = {private_key}
@@ -51,7 +43,43 @@ Endpoint = {WG_ENDPOINT}
 AllowedIPs = 0.0.0.0/0
 PersistentKeepalive = 25
 """
+    return config_text
 
+# ========================
+# GENERATE QR CODE (Base64)
+# ========================
+def generate_qr_base64(config_text: str) -> dict:
+    """
+    Generate QR code dari config text
+    Returns dict dengan base64 encoded QR dan expiration info
+    """
+    img = qrcode.make(config_text)
+    
+    # Convert to base64
+    buffer = BytesIO()
+    img.save(buffer, format='PNG')
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    
+    # Calculate expiration
+    expires_at = datetime.now() + timedelta(minutes=QR_CODE_EXPIRATION_MINUTES)
+    
+    return {
+        "qr_base64": qr_base64,
+        "expires_at": expires_at.isoformat(),
+        "expires_in_minutes": QR_CODE_EXPIRATION_MINUTES
+    }
+
+# ========================
+# LEGACY FUNCTIONS (for backward compatibility)
+# ========================
+def generate_client_config(username, client_ip):
+    """
+    Legacy function - untuk backward compatibility
+    Deprecated: Use generate_client_config_text instead
+    """
+    private_key, public_key = generate_keypair()
+    config_text = generate_client_config_text(private_key, public_key, client_ip)
+    
     return {
         "username": username,
         "private_key": private_key,
@@ -59,12 +87,3 @@ PersistentKeepalive = 25
         "ip": client_ip,
         "config": config_text
     }
-
-# ========================
-# GENERATE QR CODE
-# ========================
-def generate_qr(username, config_text):
-    img = qrcode.make(config_text)
-    path = f"{BASE_DIR}/{username}.png"
-    img.save(path)
-    return path

@@ -3,6 +3,8 @@ from fastapi.security.utils import get_authorization_scheme_param
 import jwt
 import time
 from app.config import JWT_SECRET, JWT_ALGO
+from app.core.ldap_client import is_admin
+from app.logger import logger
 
 
 # ====================================================
@@ -53,15 +55,25 @@ def verify_refresh_token(token: str):
 
 # ====================================================
 # ------------------- ADMIN ACCESS -------------------
+# Check admin dari LDAP group (cn=admins,ou=groups,dc=example,dc=com)
 # ====================================================
 
-ADMIN_LIST = ["denita"]   # nanti bisa diganti LDAP group atau DB
-
-
 def verify_jwt_admin(request: Request):
+    """
+    Verify JWT dan check jika user adalah admin
+    Admin ditentukan dari LDAP group membership
+    """
     username = verify_jwt(request)
 
-    if username not in ADMIN_LIST:
-        raise HTTPException(status_code=403, detail="Not allowed")
-
-    return username
+    try:
+        if not is_admin(username):
+            logger.warning(f"Admin access denied for user {username}")
+            raise HTTPException(status_code=403, detail="Not allowed: Admin access required")
+        
+        logger.debug(f"Admin access granted for user {username}")
+        return username
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error checking admin status for {username}: {e}")
+        raise HTTPException(status_code=403, detail="Not allowed: Error checking admin status")
