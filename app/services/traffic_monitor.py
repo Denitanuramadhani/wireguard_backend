@@ -9,8 +9,11 @@ from app.database.queries import (
     get_device_by_public_key,
     update_device_traffic,
     insert_traffic_log,
-    get_all_devices
+    get_all_devices,
+    batch_update_device_traffic,
+    batch_insert_traffic_logs
 )
+from app.services.bandwidth_service import check_bandwidth_limit, update_bandwidth_usage
 from app.logger import logger
 
 
@@ -67,9 +70,9 @@ def parse_wireguard_dump() -> list:
         return []
 
 
-def sync_traffic_data() -> dict:
+def sync_traffic_data(batch_size: int = 100) -> dict:
     """
-    Sync traffic data dari WireGuard ke MySQL
+    Sync traffic data dari WireGuard ke MySQL dengan batch processing
     Returns dict dengan sync statistics
     """
     stats = {
@@ -85,6 +88,10 @@ def sync_traffic_data() -> dict:
         wg_peers = parse_wireguard_dump()
         stats["peers_found"] = len(wg_peers)
         
+        # Prepare batch updates
+        device_updates = []
+        traffic_logs = []
+        
         for peer in wg_peers:
             public_key = peer["public_key"]
             transfer_rx = peer["transfer_rx"]
@@ -95,34 +102,76 @@ def sync_traffic_data() -> dict:
             device = get_device_by_public_key(public_key)
             
             if device:
-                # Update device traffic
-                success = update_device_traffic(
-                    public_key=public_key,
-                    transfer_rx=transfer_rx,
-                    transfer_tx=transfer_tx,
-                    last_seen=last_seen
-                )
+                device_id = device['id']
                 
-                if success:
-                    stats["devices_updated"] += 1
+                # Calculate traffic delta (difference from last sync)
+                previous_total = (device.get('transfer_rx', 0) or 0) + (device.get('transfer_tx', 0) or 0)
+                current_total = transfer_rx + transfer_tx
+                traffic_delta = max(0, current_total - previous_total)
+                
+                # Update bandwidth usage jika ada delta (individual untuk check limit)
+                if traffic_delta > 0:
+                    update_bandwidth_usage(device_id, traffic_delta)
                     
-                    # Insert traffic log untuk analytics
-                    log_success = insert_traffic_log(
-                        device_id=device['id'],
-                        ldap_uid=device['ldap_uid'],
-                        public_key=public_key,
-                        transfer_rx=transfer_rx,
-                        transfer_tx=transfer_tx
-                    )
-                    
-                    if log_success:
-                        stats["logs_inserted"] += 1
-                else:
-                    stats["errors"] += 1
-                    logger.warning(f"Failed to update traffic for device {device['id']}")
+                    # Check if exceeded limit
+                    exceeded, limit_info = check_bandwidth_limit(device_id)
+                    if exceeded:
+                        logger.warning(
+                            f"Device {device_id} (user: {device['ldap_uid']}) exceeded bandwidth limit: "
+                            f"{limit_info['used']}/{limit_info['limit']} bytes"
+                        )
+                        
+                        # Send alert untuk admin
+                        send_alert(
+                            alert_type="bandwidth_exceeded",
+                            severity="high",
+                            message=f"Device {device['device_name']} (user: {device['ldap_uid']}) exceeded bandwidth limit",
+                            details={
+                                "device_id": device_id,
+                                "username": device['ldap_uid'],
+                                "device_name": device['device_name'],
+                                "used": limit_info['used'],
+                                "limit": limit_info['limit'],
+                                "percentage": limit_info.get('percentage', 0)
+                            }
+                        )
+                
+                # Add to batch updates
+                device_updates.append({
+                    'public_key': public_key,
+                    'transfer_rx': transfer_rx,
+                    'transfer_tx': transfer_tx,
+                    'last_seen': last_seen
+                })
+                
+                # Add to traffic logs batch
+                traffic_logs.append({
+                    'device_id': device_id,
+                    'ldap_uid': device['ldap_uid'],
+                    'public_key': public_key,
+                    'transfer_rx': transfer_rx,
+                    'transfer_tx': transfer_tx
+                })
             else:
                 # Peer ada di WireGuard tapi tidak di MySQL
                 logger.warning(f"Peer {public_key[:20]}... found in WireGuard but not in MySQL")
+                stats["errors"] += 1
+        
+        # Batch update devices
+        if device_updates:
+            # Process in batches
+            for i in range(0, len(device_updates), batch_size):
+                batch = device_updates[i:i + batch_size]
+                updated = batch_update_device_traffic(batch)
+                stats["devices_updated"] += updated
+        
+        # Batch insert traffic logs
+        if traffic_logs:
+            # Process in batches
+            for i in range(0, len(traffic_logs), batch_size):
+                batch = traffic_logs[i:i + batch_size]
+                inserted = batch_insert_traffic_logs(batch)
+                stats["logs_inserted"] += inserted
         
         logger.info(f"Traffic sync completed: {stats}")
         return stats

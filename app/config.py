@@ -73,3 +73,17 @@ QR_CODE_EXPIRATION_MINUTES = int(os.getenv("QR_CODE_EXPIRATION_MINUTES", "30"))
 VPN_NETWORK_PREFIX = "10.8.0."
 VPN_START_IP = 2
 VPN_END_IP = 250
+
+# ======================
+# ENCRYPTION CONFIG (for private key encryption)
+# ======================
+ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY", "")  # 32-byte key untuk Fernet encryption
+# Jika tidak ada ENCRYPTION_KEY, gunakan JWT_SECRET sebagai fallback (kurang aman tapi OK untuk development)
+if not ENCRYPTION_KEY:
+    import hashlib
+    ENCRYPTION_KEY = hashlib.sha256(JWT_SECRET.encode()).digest()[:32]
+
+# ======================
+# DEVICE EXPIRATION CONFIG
+# ======================
+DEVICE_EXPIRATION_DAYS = int(os.getenv("DEVICE_EXPIRATION_DAYS", "90"))  # Auto-revoke setelah 90 hari tidak digunakan

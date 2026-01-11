@@ -14,6 +14,8 @@ from app.database.queries import (
     get_device_by_public_key
 )
 from app.wg.utils import remove_peer_from_wg
+from app.core.audit_logger import log_audit_event
+from app.core.alert_system import send_alert
 from app.logger import logger
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
@@ -115,6 +117,32 @@ def admin_revoke_device(device_id: int, request: Request):
         
         if success:
             logger.info(f"Device {device_id} revoked by admin {admin_username}")
+            
+            # Audit log
+            log_audit_event(
+                action="device_revoked_by_admin",
+                performed_by=admin_username,
+                ldap_uid=device.get('ldap_uid'),
+                device_id=device_id,
+                ip_address=request.client.host if request.client else None,
+                details={
+                    "device_name": device.get('device_name'),
+                    "username": device.get('ldap_uid')
+                }
+            )
+            
+            # Send alert
+            send_alert(
+                alert_type="device_revoked_by_admin",
+                severity="medium",
+                message=f"Device '{device.get('device_name')}' revoked by admin {admin_username}",
+                details={
+                    "device_id": device_id,
+                    "username": device.get('ldap_uid'),
+                    "admin": admin_username
+                }
+            )
+            
             return {
                 "status": "ok",
                 "message": "Device revoked successfully",

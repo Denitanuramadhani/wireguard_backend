@@ -3,9 +3,23 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_limiter import FastAPILimiter
 from redis import asyncio as aioredis
 from app.config import CORS_ORIGINS
+from app.middleware.graceful_degradation import GracefulDegradationMiddleware
+from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.logger import logger
 
-app = FastAPI(title="WireGuard VPN Portal Backend")
+app = FastAPI(
+    title="WireGuard VPN Portal Backend",
+    description="Backend API untuk WireGuard VPN Portal dengan LDAP Authentication",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
+
+# === SECURITY HEADERS MIDDLEWARE ===
+app.add_middleware(SecurityHeadersMiddleware)
+
+# === GRACEFUL DEGRADATION MIDDLEWARE ===
+app.add_middleware(GracefulDegradationMiddleware)
 
 # === CORS ===
 app.add_middleware(
@@ -46,6 +60,11 @@ async def shutdown():
     from app.core.background_jobs import stop_background_jobs
     stop_background_jobs()
     logger.info("Background jobs stopped")
+    
+    # Close LDAP connection pool
+    from app.core.ldap_pool import close_ldap_pool
+    close_ldap_pool()
+    logger.info("LDAP connection pool closed")
 
 @app.get("/")
 def home():
@@ -55,9 +74,10 @@ def home():
 from app.routers import (
     auth, wg, qr, myaccess, downloads, users, delete_user, peers,
     admin, admin_add_user, admin_devices, admin_users, admin_monitoring,
-    devices, analytics
+    devices, analytics, health, admin_bandwidth
 )
 
+app.include_router(health.router)  # Health check (no auth required)
 app.include_router(auth.router)
 app.include_router(devices.router)  # Device management
 app.include_router(analytics.router)  # Analytics & traffic monitoring
@@ -73,3 +93,4 @@ app.include_router(admin_add_user.router)
 app.include_router(admin_devices.router)  # Admin device management
 app.include_router(admin_users.router)  # Admin user management
 app.include_router(admin_monitoring.router)  # Admin monitoring
+app.include_router(admin_bandwidth.router)  # Admin bandwidth management

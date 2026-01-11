@@ -7,6 +7,7 @@ from fastapi import APIRouter, Request, Depends
 from fastapi_limiter.depends import RateLimiter
 from app.middleware.auth_middleware import verify_jwt_admin
 from app.core.ldap_client import get_user_attributes, check_wireguard_enabled, get_max_devices
+from app.core.cache import cached, clear_cache_prefix
 from app.database.queries import get_user_devices
 from app.logger import logger
 
@@ -14,9 +15,11 @@ router = APIRouter(prefix="/admin", tags=["Admin"])
 
 
 @router.get("/users", dependencies=[Depends(RateLimiter(times=20, seconds=60))])
+@cached(ttl=120, key_prefix="admin:user_list")  # Cache 2 menit
 def list_users(request: Request):
     """
     List all users dengan info dari LDAP dan MySQL
+    Cached for 2 minutes
     """
     verify_jwt_admin(request)
     

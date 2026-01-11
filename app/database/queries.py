@@ -38,7 +38,11 @@ def create_device(
     device_name: str,
     public_key: str,
     vpn_ip: str,
-    private_key_encrypted: str = None
+    private_key_encrypted: str = None,
+    qr_code_base64: str = None,
+    qr_code_expires_at: datetime = None,
+    first_seen_ip: str = None,
+    user_agent: str = None
 ) -> int:
     """
     Create a new VPN device
@@ -51,10 +55,12 @@ def create_device(
             cursor.execute(
                 """
                 INSERT INTO vpn_devices 
-                (ldap_uid, device_name, public_key, vpn_ip, private_key_encrypted, status)
-                VALUES (%s, %s, %s, %s, %s, 'active')
+                (ldap_uid, device_name, public_key, vpn_ip, private_key_encrypted, 
+                 qr_code_base64, qr_code_expires_at, first_seen_ip, user_agent, status)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, 'active')
                 """,
-                (ldap_uid, device_name, public_key, vpn_ip, private_key_encrypted)
+                (ldap_uid, device_name, public_key, vpn_ip, private_key_encrypted,
+                 qr_code_base64, qr_code_expires_at, first_seen_ip, user_agent)
             )
             device_id = cursor.lastrowid
             conn.commit()
@@ -234,6 +240,105 @@ def update_device_traffic(
             return False
 
 
+def batch_update_device_traffic(updates: list) -> int:
+    """
+    Batch update device traffic statistics
+    updates: List of dicts dengan keys: public_key, transfer_rx, transfer_tx, last_seen
+    Returns number of successful updates
+    """
+    if not updates:
+        return 0
+    
+    success_count = 0
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        try:
+            for update in updates:
+                public_key = update['public_key']
+                transfer_rx = update['transfer_rx']
+                transfer_tx = update['transfer_tx']
+                transfer_total = transfer_rx + transfer_tx
+                last_seen = update.get('last_seen')
+                
+                if last_seen:
+                    cursor.execute(
+                        """
+                        UPDATE vpn_devices 
+                        SET transfer_rx = %s,
+                            transfer_tx = %s,
+                            transfer_total = %s,
+                            last_seen = %s
+                        WHERE public_key = %s
+                        """,
+                        (transfer_rx, transfer_tx, transfer_total, last_seen, public_key)
+                    )
+                else:
+                    cursor.execute(
+                        """
+                        UPDATE vpn_devices 
+                        SET transfer_rx = %s,
+                            transfer_tx = %s,
+                            transfer_total = %s
+                        WHERE public_key = %s
+                        """,
+                        (transfer_rx, transfer_tx, transfer_total, public_key)
+                    )
+                
+                if cursor.rowcount > 0:
+                    success_count += 1
+            
+            conn.commit()
+            logger.debug(f"Batch updated {success_count}/{len(updates)} devices")
+            return success_count
+        except Exception as e:
+            conn.rollback()
+            logger.error(f"Error batch updating device traffic: {e}")
+            return success_count
+
+
+def batch_insert_traffic_logs(logs: list) -> int:
+    """
+    Batch insert traffic logs
+    logs: List of dicts dengan keys: device_id, ldap_uid, public_key, transfer_rx, transfer_tx
+    Returns number of successful inserts
+    """
+    if not logs:
+        return 0
+    
+    success_count = 0
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        try:
+            for log in logs:
+                transfer_total = log['transfer_rx'] + log['transfer_tx']
+                cursor.execute(
+                    """
+                    INSERT INTO vpn_traffic_logs 
+                    (device_id, ldap_uid, public_key, transfer_rx, transfer_tx, transfer_total)
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    """,
+                    (
+                        log['device_id'],
+                        log['ldap_uid'],
+                        log['public_key'],
+                        log['transfer_rx'],
+                        log['transfer_tx'],
+                        transfer_total
+                    )
+                )
+                success_count += 1
+            
+            conn.commit()
+            logger.debug(f"Batch inserted {success_count}/{len(logs)} traffic logs")
+            return success_count
+        except Exception as e:
+            conn.rollback()
+            logger.error(f"Error batch inserting traffic logs: {e}")
+            return success_count
+
+
 def get_all_devices(status: str = None, limit: int = None, offset: int = 0) -> list:
     """
     Get all devices (admin function)
@@ -402,3 +507,89 @@ def get_traffic_summary(
             "hours": hours,
             "since": since.isoformat()
         }
+
+
+def save_qr_code(device_id: int, qr_code_base64: str, expires_at: datetime) -> bool:
+    """
+    Save QR code dengan expiration timestamp
+    Returns True if successful
+    """
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        try:
+            cursor.execute(
+                """
+                UPDATE vpn_devices 
+                SET qr_code_base64 = %s,
+                    qr_code_expires_at = %s
+                WHERE id = %s
+                """,
+                (qr_code_base64, expires_at, device_id)
+            )
+            conn.commit()
+            logger.info(f"QR code saved for device ID={device_id}, expires_at={expires_at}")
+            return True
+        except Exception as e:
+            conn.rollback()
+            logger.error(f"Error saving QR code: {e}")
+            return False
+
+
+def get_qr_code(device_id: int) -> dict:
+    """
+    Get QR code untuk device
+    Returns dict dengan qr_code_base64 dan expires_at, atau None jika tidak ada/expired
+    """
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        cursor.execute(
+            """
+            SELECT qr_code_base64, qr_code_expires_at 
+            FROM vpn_devices 
+            WHERE id = %s
+            """,
+            (device_id,)
+        )
+        result = cursor.fetchone()
+        
+        if not result or not result['qr_code_base64']:
+            return None
+        
+        # Check expiration
+        expires_at = result['qr_code_expires_at']
+        if expires_at and datetime.now() > expires_at:
+            # QR expired, clear it
+            cursor.execute(
+                "UPDATE vpn_devices SET qr_code_base64 = NULL, qr_code_expires_at = NULL WHERE id = %s",
+                (device_id,)
+            )
+            conn.commit()
+            return None
+        
+        return {
+            "qr_code_base64": result['qr_code_base64'],
+            "expires_at": expires_at.isoformat() if expires_at else None
+        }
+
+
+def clear_qr_code(device_id: int) -> bool:
+    """
+    Clear QR code dari database (setelah expired atau revoked)
+    Returns True if successful
+    """
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        
+        try:
+            cursor.execute(
+                "UPDATE vpn_devices SET qr_code_base64 = NULL, qr_code_expires_at = NULL WHERE id = %s",
+                (device_id,)
+            )
+            conn.commit()
+            return True
+        except Exception as e:
+            conn.rollback()
+            logger.error(f"Error clearing QR code: {e}")
+            return False

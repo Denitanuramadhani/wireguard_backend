@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: wireguard-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=True
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app/app
+      - ./database:/app/database
+      - ./ldap:/app/ldap
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+    networks:
+      - wireguard-network
+    restart: unless-stopped
+    # Note: WireGuard commands need sudo access, so container needs proper permissions
+    # In production, consider running without container or with privileged mode
+
+  redis:
+    image: redis:7-alpine
+    container_name: wireguard-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - wireguard-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Optional: MySQL container untuk development
+  # Uncomment jika ingin run MySQL di Docker juga
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: wireguard-mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: wireguard_vpn
+  #     MYSQL_USER: wgadmin
+  #     MYSQL_PASSWORD: wgpassword
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #     - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+  #   networks:
+  #     - wireguard-network
+  #   restart: unless-stopped
+
+volumes:
+  redis-data:
+  # mysql-data:
+
+networks:
+  wireguard-network:
+    driver: bridge

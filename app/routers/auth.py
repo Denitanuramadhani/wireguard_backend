@@ -4,6 +4,8 @@ from fastapi import APIRouter, HTTPException, Request, Depends
 from fastapi_limiter.depends import RateLimiter
 from app.services.ldap_auth import ldap_authenticate
 from app.core.ldap_client import check_wireguard_enabled, get_max_devices
+from app.core.audit_logger import log_audit_event
+from app.core.alert_system import send_alert
 from app.config import JWT_SECRET, JWT_ALGO
 from app.logger import logger
 from app.middleware.auth_middleware import create_refresh_token, verify_refresh_token
@@ -30,6 +32,15 @@ def login(data: dict, request: Request):
 
     if not ldap_authenticate(username, password):
         logger.warning(f"LOGIN FAILED for username={username}")
+        
+        # Audit log untuk failed login
+        log_audit_event(
+            action="login_failed",
+            performed_by=username,
+            ip_address=request.client.host if request.client else None,
+            details={"username": username}
+        )
+        
         raise HTTPException(status_code=401, detail="Invalid LDAP credentials")
 
     # Check wireguardEnabled status (tidak block login, hanya info)
@@ -40,6 +51,18 @@ def login(data: dict, request: Request):
     refresh = create_refresh_token(username)
 
     logger.info(f"LOGIN SUCCESS username={username} wireguardEnabled={wireguard_enabled}")
+    
+    # Audit log untuk successful login
+    log_audit_event(
+        action="login_success",
+        performed_by=username,
+        ldap_uid=username,
+        ip_address=request.client.host if request.client else None,
+        details={
+            "wireguard_enabled": wireguard_enabled,
+            "max_devices": max_devices
+        }
+    )
 
     return {
         "status": "ok",

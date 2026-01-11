@@ -1,49 +1,40 @@
 """
 LDAP Client Module
 Handles LDAP operations untuk WireGuard VPN Portal
+Uses connection pooling dan caching untuk performance
 """
 
 from ldap3 import Server, Connection, ALL, MODIFY_REPLACE
 from app.config import LDAP_SERVER, LDAP_BASE_DN, LDAP_USER_DN, LDAP_ADMIN_DN, LDAP_ADMIN_PASSWORD
+from app.core.ldap_pool import get_ldap_pool
+from app.core.cache import cached
+from app.core.audit_logger import log_audit_event
 from app.logger import logger
 
 
 def get_ldap_connection(admin: bool = False):
     """
-    Get LDAP connection
+    Get LDAP connection from pool
     admin=True: Use admin credentials
     admin=False: Anonymous connection (untuk read-only)
     """
-    try:
-        server = Server(LDAP_SERVER, get_info=ALL)
-        
-        if admin:
-            conn = Connection(
-                server,
-                user=LDAP_ADMIN_DN,
-                password=LDAP_ADMIN_PASSWORD,
-                auto_bind=True
-            )
-        else:
-            conn = Connection(server, auto_bind=True)
-        
-        return conn
-    except Exception as e:
-        logger.error(f"LDAP connection error: {e}")
-        raise
+    pool = get_ldap_pool()
+    return pool.get_connection(admin=admin)
 
 
 def get_user_attributes(username: str, attributes: list = None):
     """
     Get user attributes from LDAP
     Returns dict dengan attributes atau None jika user tidak ditemukan
+    Uses connection pool
     """
     if attributes is None:
         attributes = ['*']  # Get all attributes
     
+    pool = get_ldap_pool()
     conn = None
     try:
-        conn = get_ldap_connection()
+        conn = pool.get_connection(admin=False)
         user_dn = LDAP_USER_DN.format(username)
         
         conn.search(
@@ -70,13 +61,15 @@ def get_user_attributes(username: str, attributes: list = None):
         return None
     finally:
         if conn:
-            conn.unbind()
+            pool.return_connection(conn, admin=False)
 
 
+@cached(ttl=600, key_prefix="ldap:wireguard_enabled")  # Cache 10 menit
 def check_wireguard_enabled(username: str) -> bool:
     """
     Check if user has WireGuard access enabled
     Returns True jika wireguardEnabled = TRUE, False jika FALSE atau tidak set
+    Cached for 10 minutes
     """
     try:
         attrs = get_user_attributes(username, ['wireguardEnabled', 'objectClass'])
@@ -102,10 +95,12 @@ def check_wireguard_enabled(username: str) -> bool:
         return False
 
 
+@cached(ttl=600, key_prefix="ldap:max_devices")  # Cache 10 menit
 def get_max_devices(username: str) -> int:
     """
     Get maximum devices allowed for user
     Returns int, default 3 jika tidak set
+    Cached for 10 minutes
     """
     try:
         attrs = get_user_attributes(username, ['maxWireguardDevices'])
@@ -130,10 +125,12 @@ def enable_wireguard_user(username: str) -> bool:
     """
     Enable WireGuard access untuk user
     Returns True jika berhasil
+    Invalidates cache setelah success
     """
+    pool = get_ldap_pool()
     conn = None
     try:
-        conn = get_ldap_connection(admin=True)
+        conn = pool.get_connection(admin=True)
         user_dn = LDAP_USER_DN.format(username)
         
         # Check if user exists
@@ -165,6 +162,12 @@ def enable_wireguard_user(username: str) -> bool:
         
         if conn.result['description'] == 'success':
             logger.info(f"WireGuard enabled for user {username}")
+            # Invalidate cache
+            check_wireguard_enabled.invalidate(username)
+            get_max_devices.invalidate(username)
+            
+            # Audit log (performed_by akan di-set oleh caller)
+            # Note: Caller harus pass performed_by untuk audit log
             return True
         else:
             logger.error(f"Failed to enable WireGuard for {username}: {conn.result}")
@@ -174,17 +177,19 @@ def enable_wireguard_user(username: str) -> bool:
         return False
     finally:
         if conn:
-            conn.unbind()
+            pool.return_connection(conn, admin=True)
 
 
 def disable_wireguard_user(username: str) -> bool:
     """
     Disable WireGuard access untuk user
     Returns True jika berhasil
+    Invalidates cache setelah success
     """
+    pool = get_ldap_pool()
     conn = None
     try:
-        conn = get_ldap_connection(admin=True)
+        conn = pool.get_connection(admin=True)
         user_dn = LDAP_USER_DN.format(username)
         
         # Modify user: set wireguardEnabled = FALSE
@@ -196,6 +201,8 @@ def disable_wireguard_user(username: str) -> bool:
         
         if conn.result['description'] == 'success':
             logger.info(f"WireGuard disabled for user {username}")
+            # Invalidate cache
+            check_wireguard_enabled.invalidate(username)
             return True
         else:
             logger.error(f"Failed to disable WireGuard for {username}: {conn.result}")
@@ -205,17 +212,19 @@ def disable_wireguard_user(username: str) -> bool:
         return False
     finally:
         if conn:
-            conn.unbind()
+            pool.return_connection(conn, admin=True)
 
 
 def set_max_devices(username: str, max_devices: int) -> bool:
     """
     Set maximum devices untuk user
     Returns True jika berhasil
+    Invalidates cache setelah success
     """
+    pool = get_ldap_pool()
     conn = None
     try:
-        conn = get_ldap_connection(admin=True)
+        conn = pool.get_connection(admin=True)
         user_dn = LDAP_USER_DN.format(username)
         
         changes = {
@@ -226,6 +235,8 @@ def set_max_devices(username: str, max_devices: int) -> bool:
         
         if conn.result['description'] == 'success':
             logger.info(f"Max devices set to {max_devices} for user {username}")
+            # Invalidate cache
+            get_max_devices.invalidate(username)
             return True
         else:
             logger.error(f"Failed to set max devices for {username}: {conn.result}")
@@ -235,7 +246,7 @@ def set_max_devices(username: str, max_devices: int) -> bool:
         return False
     finally:
         if conn:
-            conn.unbind()
+            pool.return_connection(conn, admin=True)
 
 
 def check_user_in_group(username: str, group_dn: str) -> bool:
@@ -259,10 +270,12 @@ def check_user_in_group(username: str, group_dn: str) -> bool:
         return False
 
 
+@cached(ttl=900, key_prefix="ldap:is_admin")  # Cache 15 menit
 def is_admin(username: str) -> bool:
     """
     Check if user is admin
     Checks memberOf attribute untuk admin group
+    Cached for 15 minutes
     """
     admin_group_dn = f"cn=admins,ou=groups,{LDAP_BASE_DN}"
     return check_user_in_group(username, admin_group_dn)

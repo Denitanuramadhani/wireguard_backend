@@ -13,10 +13,11 @@ from app.services.device_service import (
     revoke_user_device,
     get_device_info,
     validate_device_name,
-    can_add_device
+    can_add_device,
+    regenerate_qr_code
 )
-from app.database.queries import get_user_devices
-from app.wg.generator import generate_qr_base64, generate_client_config_text
+from app.database.queries import get_user_devices, get_qr_code, clear_qr_code
+from app.core.cache import cached, clear_cache_prefix
 from app.logger import logger
 
 router = APIRouter(prefix="/devices", tags=["Devices"])
@@ -42,13 +43,14 @@ def add_device(data: dict, request: Request):
         )
     
     try:
-        result = create_user_device(username, device_name)
+        # Get client IP and User-Agent untuk device fingerprinting
+        client_ip = request.client.host if request.client else None
+        user_agent = request.headers.get("user-agent", None)
         
-        # Generate QR code
-        qr_info = generate_qr_base64(result["config"])
-        result["qr_code"] = qr_info
+        result = create_user_device(username, device_name, user_agent=user_agent, client_ip=client_ip)
         
-        logger.info(f"Device added: User={username}, Device={device_name}, ID={result['device_id']}")
+        # QR code sudah di-generate di service dan disimpan di database
+        logger.info(f"Device added: User={username}, Device={device_name}, ID={result['device_id']}, IP={client_ip}")
         
         return {
             "status": "ok",
@@ -68,6 +70,7 @@ def add_device(data: dict, request: Request):
 def list_devices(request: Request, include_revoked: bool = False):
     """
     List all devices untuk logged-in user
+    Note: Cache di-handle di service level untuk better control
     """
     username = verify_jwt(request)
     
@@ -169,8 +172,8 @@ def get_device_config(device_id: int, request: Request):
 def get_device_qr(device_id: int, request: Request):
     """
     Get QR code untuk device
-    Note: QR hanya bisa dibuat jika private key masih ada (saat create device)
-    Setelah itu, QR tidak bisa di-generate lagi karena private key tidak disimpan
+    Returns QR code jika masih valid (belum expired)
+    Jika expired atau tidak ada, return error dengan option untuk regenerate
     """
     username = verify_jwt(request)
     
@@ -179,10 +182,47 @@ def get_device_qr(device_id: int, request: Request):
     if device['status'] != 'active':
         raise HTTPException(status_code=400, detail=f"Cannot get QR for {device['status']} device")
     
-    raise HTTPException(
-        status_code=400,
-        detail="QR code hanya tersedia saat device pertama kali dibuat. Private key tidak disimpan untuk keamanan. Jika perlu QR code baru, revoke device ini dan buat device baru."
-    )
+    # Get QR code dari database
+    qr_data = get_qr_code(device_id)
+    
+    if qr_data:
+        # QR code masih valid
+        return {
+            "status": "ok",
+            "device_id": device_id,
+            "qr_code": qr_data['qr_code_base64'],
+            "expires_at": qr_data['expires_at'],
+            "expired": False
+        }
+    else:
+        # QR code expired atau tidak ada, bisa regenerate
+        raise HTTPException(
+            status_code=404,
+            detail="QR code tidak tersedia atau sudah expired. Gunakan endpoint POST /devices/{device_id}/qr/regenerate untuk membuat QR code baru."
+        )
+
+
+@router.post("/{device_id}/qr/regenerate", dependencies=[Depends(RateLimiter(times=3, seconds=60))])
+def regenerate_device_qr(device_id: int, request: Request):
+    """
+    Regenerate QR code untuk device
+    QR code akan expire dalam 30 menit
+    """
+    username = verify_jwt(request)
+    
+    try:
+        result = regenerate_qr_code(device_id, username)
+        
+        return {
+            "status": "ok",
+            "message": "QR code regenerated successfully",
+            **result
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        logger.error(f"Error regenerating QR code for device {device_id}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to regenerate QR code: {str(e)}")
 
 
 @router.get("/check/limit")

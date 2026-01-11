@@ -16,6 +16,8 @@ from app.core.ldap_client import (
 )
 from app.database.queries import get_user_devices, revoke_device
 from app.wg.utils import remove_peer_from_wg
+from app.core.audit_logger import log_audit_event
+from app.core.alert_system import send_alert
 from app.logger import logger
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
@@ -38,6 +40,27 @@ def enable_user_vpn(username: str, request: Request):
     
     if success:
         logger.info(f"VPN access enabled for user {username} by admin {admin_username}")
+        
+        # Audit log
+        log_audit_event(
+            action="user_enabled",
+            performed_by=admin_username,
+            ldap_uid=username,
+            ip_address=request.client.host if request.client else None,
+            details={"username": username}
+        )
+        
+        # Send alert
+        send_alert(
+            alert_type="user_enabled",
+            severity="low",
+            message=f"VPN access enabled for user {username} by admin {admin_username}",
+            details={
+                "username": username,
+                "admin": admin_username
+            }
+        )
+        
         return {
             "status": "ok",
             "message": f"VPN access enabled for user {username}",
@@ -85,6 +108,31 @@ def disable_user_vpn(username: str, request: Request):
     
     if success:
         logger.info(f"VPN access disabled for user {username} by admin {admin_username}. {revoked_count} devices revoked.")
+        
+        # Audit log
+        log_audit_event(
+            action="user_disabled",
+            performed_by=admin_username,
+            ldap_uid=username,
+            ip_address=request.client.host if request.client else None,
+            details={
+                "username": username,
+                "devices_revoked": revoked_count
+            }
+        )
+        
+        # Send alert
+        send_alert(
+            alert_type="user_disabled",
+            severity="medium",
+            message=f"VPN access disabled for user {username} by admin {admin_username}. {revoked_count} devices revoked.",
+            details={
+                "username": username,
+                "admin": admin_username,
+                "devices_revoked": revoked_count
+            }
+        )
+        
         return {
             "status": "ok",
             "message": f"VPN access disabled for user {username}",
@@ -161,6 +209,19 @@ def set_user_max_devices(username: str, data: dict, request: Request):
     
     if success:
         logger.info(f"Max devices set to {max_devices} for user {username}")
+        
+        # Audit log
+        log_audit_event(
+            action="max_devices_set",
+            performed_by=admin_username,
+            ldap_uid=username,
+            ip_address=request.client.host if request.client else None,
+            details={
+                "username": username,
+                "max_devices": max_devices
+            }
+        )
+        
         return {
             "status": "ok",
             "message": f"Max devices set to {max_devices} for user {username}",
