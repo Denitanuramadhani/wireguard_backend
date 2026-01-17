@@ -7,8 +7,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - ENVIRONMENT=development
-      - DEBUG=True
+      - ENVIRONMENT=production
+      - DEBUG=False
     env_file:
       - .env
     volumes:
@@ -17,48 +17,71 @@ services:
       - ./ldap:/app/ldap
       - ./logs:/app/logs
     depends_on:
-      - redis
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
     networks:
-      - wireguard-network
+      - zanfuu_network
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     # Note: WireGuard commands need sudo access, so container needs proper permissions
     # In production, consider running without container or with privileged mode
+
+  mysql:
+    image: mysql:8.0
+    container_name: wireguard-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-wireguard_vpn}
+      MYSQL_USER: ${MYSQL_USER:-wgadmin}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wgpassword}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/migrations:/docker-entrypoint-initdb.d/migrations:ro
+    networks:
+      - zanfuu_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   redis:
     image: redis:7-alpine
     container_name: wireguard-redis
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis-data:/data
     networks:
-      - wireguard-network
+      - zanfuu_network
     restart: unless-stopped
-    command: redis-server --appendonly yes
-
-  # Optional: MySQL container untuk development
-  # Uncomment jika ingin run MySQL di Docker juga
-  # mysql:
-  #   image: mysql:8.0
-  #   container_name: wireguard-mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: rootpassword
-  #     MYSQL_DATABASE: wireguard_vpn
-  #     MYSQL_USER: wgadmin
-  #     MYSQL_PASSWORD: wgpassword
-  #   ports:
-  #     - "3306:3306"
-  #   volumes:
-  #     - mysql-data:/var/lib/mysql
-  #     - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-  #   networks:
-  #     - wireguard-network
-  #   restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-}
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
+  mysql-data:
+    driver: local
   redis-data:
-  # mysql-data:
+    driver: local
 
 networks:
-  wireguard-network:
+  zanfuu_network:
     driver: bridge
+    name: zanfuu_network

@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     wireguard-tools \
     sudo \
     curl \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first untuk better caching
