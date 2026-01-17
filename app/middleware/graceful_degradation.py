@@ -49,11 +49,20 @@ class GracefulDegradationMiddleware(BaseHTTPMiddleware):
                     }
                 )
             
-            # Redis errors (non-critical, bisa continue)
-            if "redis" in error_str:
-                logger.warning(f"Redis service error (non-critical): {e}")
-                # Continue dengan direct execution (cache akan bypass)
-                # Don't return error, let request continue
+            # Redis/RateLimiter errors (non-critical, bisa bypass)
+            if "redis" in error_str or "ratelimiter" in error_str or "rate limit" in error_str:
+                logger.warning(f"Redis/RateLimiter error (non-critical): {e}")
+                # Return 503 but with message that rate limiting is disabled
+                # Request can still be processed if rate limiting is optional
+                return JSONResponse(
+                    status_code=503,
+                    content={
+                        "status": "service_unavailable",
+                        "message": "Rate limiting service is temporarily unavailable. Please try again later.",
+                        "error": "RATE_LIMIT_UNAVAILABLE",
+                        "note": "This is non-critical. If rate limiting is optional, the request may still be processed."
+                    }
+                )
             
             # Re-raise untuk other errors
             raise

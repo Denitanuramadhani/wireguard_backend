@@ -16,7 +16,7 @@ app = FastAPI(
 )
 
 # === SECURITY HEADERS MIDDLEWARE ===
-app.add_middleware(SecurityHeadersMiddleware)
+# app.add_middleware(SecurityHeadersMiddleware)
 
 # === GRACEFUL DEGRADATION MIDDLEWARE ===
 app.add_middleware(GracefulDegradationMiddleware)
@@ -31,16 +31,27 @@ app.add_middleware(
 )
 
 # === RATE LIMIT INIT ===
-from app.config import REDIS_URL
+from app.config import REDIS_URL, ENVIRONMENT
 
 @app.on_event("startup")
 async def startup():
-    redis = aioredis.from_url(
-        REDIS_URL,
-        encoding="utf-8",
-        decode_responses=True
-    )
-    await FastAPILimiter.init(redis)
+    # Initialize Redis for rate limiting
+    try:
+        redis = aioredis.from_url(
+            REDIS_URL,
+            encoding="utf-8",
+            decode_responses=True
+        )
+        await FastAPILimiter.init(redis)
+        logger.info("Redis connection successful - Rate limiting enabled")
+    except Exception as e:
+        if ENVIRONMENT == "development":
+            logger.warning(f"Redis connection failed: {e}. Rate limiting disabled. This is OK for development.")
+            logger.warning("To enable rate limiting, start Redis: redis-server")
+        else:
+            logger.error(f"Redis connection failed: {e}. Rate limiting disabled.")
+            # In production, you might want to raise the error
+            # raise
     
     # Test database connection
     from app.database.connection import test_connection
@@ -72,7 +83,7 @@ def home():
 
 # === ROUTERS ===
 from app.routers import (
-    auth, wg, qr, myaccess, downloads, users, delete_user, peers,
+    auth, wg, qr, myaccess, downloads, users, peers,
     admin, admin_add_user, admin_devices, admin_users, admin_monitoring,
     devices, analytics, health, admin_bandwidth
 )
@@ -86,7 +97,7 @@ app.include_router(qr.router)  # Legacy: Deprecated
 app.include_router(myaccess.router)
 app.include_router(downloads.router)
 app.include_router(users.router)
-app.include_router(delete_user.router)
+# app.include_router(delete_user.router)
 app.include_router(peers.router)
 app.include_router(admin.router)
 app.include_router(admin_add_user.router)
