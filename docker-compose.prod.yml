@@ -1,0 +1,129 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wireguard-backend:latest
+    container_name: wireguard-backend-prod
+    ports:
+      - "127.0.0.1:8000:8000"  # Bind ke localhost saja, gunakan nginx reverse proxy
+    env_file:
+      - .env.production  # Gunakan .env.production untuk secrets
+    environment:
+      - ENVIRONMENT=production
+      - DEBUG=False
+      - LOG_LEVEL=INFO
+    volumes:
+      # Hanya mount volumes yang diperlukan, JANGAN mount code (untuk security)
+      - backend-logs:/app/logs
+      - /etc/wireguard:/etc/wireguard:ro  # Read-only mount untuk WireGuard config
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - wireguard-network
+    restart: always
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+      window: 120s
+    # Resource limits untuk production
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "production"
+    # Network isolation
+    network_mode: bridge
+    # User untuk non-root execution (sudah di Dockerfile)
+    user: "1000:1000"
+
+  redis:
+    image: redis:7-alpine
+    container_name: wireguard-redis-prod
+    ports:
+      - "127.0.0.1:6379:6379"  # Bind ke localhost saja
+    volumes:
+      - redis-data:/data
+    networks:
+      - wireguard-network
+    restart: always
+    restart_policy:
+      condition: on-failure
+      delay: 5s
+      max_attempts: 3
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    # Redis security configuration
+    command: >
+      redis-server
+      --appendonly yes
+      --requirepass ${REDIS_PASSWORD:-}
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Security
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  redis-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/lib/wireguard/redis-data
+  backend-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/log/wireguard-backend
+
+networks:
+  wireguard-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

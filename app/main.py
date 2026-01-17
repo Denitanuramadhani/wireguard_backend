@@ -3,8 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi_limiter import FastAPILimiter
 from redis import asyncio as aioredis
 from app.config import CORS_ORIGINS
-from app.middleware.graceful_degradation import GracefulDegradationMiddleware
-from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.logger import logger
 
 app = FastAPI(
@@ -14,12 +12,6 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
-
-# === SECURITY HEADERS MIDDLEWARE ===
-app.add_middleware(SecurityHeadersMiddleware)
-
-# === GRACEFUL DEGRADATION MIDDLEWARE ===
-app.add_middleware(GracefulDegradationMiddleware)
 
 # === CORS ===
 app.add_middleware(
@@ -71,26 +63,36 @@ def home():
     return {"message": "Backend is running"}
 
 # === ROUTERS ===
-from app.routers import (
-    auth, wg, qr, myaccess, downloads, users, delete_user, peers,
-    admin, admin_add_user, admin_devices, admin_users, admin_monitoring,
-    devices, analytics, health, admin_bandwidth
-)
+# Public endpoints (no auth required)
+from app.routers import health
+app.include_router(health.router)
 
-app.include_router(health.router)  # Health check (no auth required)
+# Authentication
+from app.routers import auth
 app.include_router(auth.router)
+
+# User endpoints
+from app.routers import devices, myaccess, downloads, users, peers, analytics
 app.include_router(devices.router)  # Device management
 app.include_router(analytics.router)  # Analytics & traffic monitoring
-app.include_router(wg.router)  # Legacy: Keep for backward compatibility
-app.include_router(qr.router)  # Legacy: Deprecated
 app.include_router(myaccess.router)
 app.include_router(downloads.router)
 app.include_router(users.router)
-app.include_router(delete_user.router)
 app.include_router(peers.router)
+
+# Admin endpoints
+from app.routers import (
+    admin, admin_add_user, admin_devices, admin_users, 
+    admin_monitoring, admin_bandwidth
+)
 app.include_router(admin.router)
 app.include_router(admin_add_user.router)
 app.include_router(admin_devices.router)  # Admin device management
 app.include_router(admin_users.router)  # Admin user management
 app.include_router(admin_monitoring.router)  # Admin monitoring
 app.include_router(admin_bandwidth.router)  # Admin bandwidth management
+
+# Legacy endpoints (deprecated, kept for backward compatibility)
+from app.routers import wg, qr
+app.include_router(wg.router)  # Legacy: Keep for backward compatibility
+app.include_router(qr.router)  # Legacy: Deprecated

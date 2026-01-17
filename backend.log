@@ -191,3 +191,847 @@
 2025-12-15 11:50:27,895 - INFO - LOGIN SUCCESS username=denita
 2026-01-04 14:34:33,506 - INFO - LOGIN attempt by username=denita from IP=182.10.129.53
 2026-01-04 14:34:33,585 - INFO - LOGIN SUCCESS username=denita
+2026-01-17 17:33:00,265 - INFO - Database connection test successful
+2026-01-17 18:08:21,601 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:08:21,602 - ERROR - Database connection error: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:08:21,602 - ERROR - Database connection test failed: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:08:21,602 - ERROR - Database connection failed!
+2026-01-17 18:08:21,624 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:08:21,625 - INFO - Traffic sync job started
+2026-01-17 18:08:21,627 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:08:21,627 - INFO - Device expiration check job started
+2026-01-17 18:08:21,628 - INFO - All background jobs started
+2026-01-17 18:08:21,628 - INFO - Background jobs started
+2026-01-17 18:08:21,707 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:08:21,708 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:08:21.624786'}
+2026-01-17 18:08:21,795 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:08:21,796 - ERROR - Database connection error: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:08:21,796 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'wgadmin'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:09:22,256 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:09:22,256 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:09:22.230557'}
+2026-01-17 18:10:22,789 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:10:22,789 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:10:22.741224'}
+2026-01-17 18:11:23,272 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:11:23,273 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:11:23.230611'}
+2026-01-17 18:12:23,792 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:12:23,793 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:12:23.761641'}
+2026-01-17 18:12:25,266 - INFO - Background jobs stopped
+2026-01-17 18:12:25,267 - INFO - Background jobs stopped
+2026-01-17 18:12:25,267 - INFO - LDAP connection pool closed
+2026-01-17 18:12:48,889 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:12:48,890 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:12:48,890 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:12:48,890 - ERROR - Database connection failed!
+2026-01-17 18:12:48,896 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:12:48,896 - INFO - Traffic sync job started
+2026-01-17 18:12:48,896 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:12:48,896 - INFO - Device expiration check job started
+2026-01-17 18:12:48,896 - INFO - All background jobs started
+2026-01-17 18:12:48,897 - INFO - Background jobs started
+2026-01-17 18:12:48,936 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:12:48,936 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:12:48.896075'}
+2026-01-17 18:12:49,026 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:12:49,026 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:12:49,027 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:13:49,432 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:13:49,432 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:13:49.399456'}
+2026-01-17 18:14:49,961 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:14:49,961 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:14:49.918090'}
+2026-01-17 18:14:55,010 - INFO - Background jobs stopped
+2026-01-17 18:14:55,010 - INFO - Background jobs stopped
+2026-01-17 18:14:55,010 - INFO - LDAP connection pool closed
+2026-01-17 18:14:59,410 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:14:59,412 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:14:59,412 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:14:59,412 - ERROR - Database connection failed!
+2026-01-17 18:14:59,421 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:14:59,421 - INFO - Traffic sync job started
+2026-01-17 18:14:59,424 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:14:59,424 - INFO - Device expiration check job started
+2026-01-17 18:14:59,424 - INFO - All background jobs started
+2026-01-17 18:14:59,425 - INFO - Background jobs started
+2026-01-17 18:14:59,506 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:14:59,506 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:14:59.421707'}
+2026-01-17 18:14:59,563 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:14:59,564 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:14:59,564 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:15:59,970 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:15:59,970 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:15:59.944456'}
+2026-01-17 18:16:56,523 - INFO - Background jobs stopped
+2026-01-17 18:16:56,523 - INFO - Background jobs stopped
+2026-01-17 18:16:56,524 - INFO - LDAP connection pool closed
+2026-01-17 18:17:23,876 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:17:23,876 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:17:23,876 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:17:23,876 - ERROR - Database connection failed!
+2026-01-17 18:17:23,882 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:17:23,882 - INFO - Traffic sync job started
+2026-01-17 18:17:23,884 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:17:23,884 - INFO - Device expiration check job started
+2026-01-17 18:17:23,884 - INFO - All background jobs started
+2026-01-17 18:17:23,884 - INFO - Background jobs started
+2026-01-17 18:17:23,941 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:17:23,941 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:17:23.882712'}
+2026-01-17 18:17:23,986 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:17:23,986 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:17:23,987 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:18:24,490 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:18:24,491 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:18:24.459555'}
+2026-01-17 18:19:25,039 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:19:25,039 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:19:25.003340'}
+2026-01-17 18:20:25,545 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:20:25,546 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:20:25.519952'}
+2026-01-17 18:21:26,133 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:21:26,133 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:21:26.109077'}
+2026-01-17 18:22:26,666 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:22:26,666 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:22:26.620587'}
+2026-01-17 18:23:27,258 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:23:27,258 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:23:27.230740'}
+2026-01-17 18:24:27,743 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:24:27,744 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:24:27.714289'}
+2026-01-17 18:25:28,224 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:25:28,224 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:25:28.194350'}
+2026-01-17 18:26:28,855 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:26:28,856 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:26:28.829025'}
+2026-01-17 18:27:29,358 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:27:29,358 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:27:29.317541'}
+2026-01-17 18:28:29,976 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:28:29,977 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:28:29.917353'}
+2026-01-17 18:29:30,516 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:29:30,516 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:29:30.487812'}
+2026-01-17 18:30:31,003 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:30:31,004 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:30:30.975491'}
+2026-01-17 18:31:31,580 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:31:31,580 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:31:31.560131'}
+2026-01-17 18:32:32,105 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:32:32,106 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:32:32.084365'}
+2026-01-17 18:33:32,731 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:33:32,731 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:33:32.708674'}
+2026-01-17 18:34:33,381 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:34:33,382 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:34:33.322341'}
+2026-01-17 18:35:33,934 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:35:33,936 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:35:33.905169'}
+2026-01-17 18:36:34,510 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:36:34,510 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:36:34.481132'}
+2026-01-17 18:37:35,063 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:37:35,065 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:37:35.039363'}
+2026-01-17 18:38:35,680 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:38:35,680 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:38:35.629615'}
+2026-01-17 18:39:36,151 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:39:36,151 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:39:36.127709'}
+2026-01-17 18:40:36,669 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:40:36,670 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:40:36.643298'}
+2026-01-17 18:41:37,221 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:41:37,221 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:41:37.194595'}
+2026-01-17 18:42:37,801 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:42:37,801 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:42:37.771280'}
+2026-01-17 18:43:38,304 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:43:38,304 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:43:38.277816'}
+2026-01-17 18:44:38,837 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:44:38,838 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:44:38.808454'}
+2026-01-17 18:45:39,388 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:45:39,388 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:45:39.359898'}
+2026-01-17 18:46:40,073 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:46:40,074 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:46:40.045714'}
+2026-01-17 18:47:40,643 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:47:40,644 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:47:40.615299'}
+2026-01-17 18:48:41,192 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:48:41,193 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:48:41.162939'}
+2026-01-17 18:49:41,680 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:49:41,680 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:49:41.655536'}
+2026-01-17 18:50:42,197 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:50:42,197 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:50:42.135396'}
+2026-01-17 18:51:42,639 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:51:42,640 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:51:42.617137'}
+2026-01-17 18:52:43,172 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:52:43,172 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:52:43.144275'}
+2026-01-17 18:53:43,754 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:53:43,754 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:53:43.728040'}
+2026-01-17 18:54:44,273 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:54:44,274 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:54:44.220210'}
+2026-01-17 18:55:44,795 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:55:44,795 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:55:44.775274'}
+2026-01-17 18:56:29,574 - INFO - Background jobs stopped
+2026-01-17 18:56:29,575 - INFO - Background jobs stopped
+2026-01-17 18:56:29,575 - INFO - LDAP connection pool closed
+2026-01-17 18:56:34,213 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,214 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,214 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,214 - ERROR - Database connection failed!
+2026-01-17 18:56:34,227 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:56:34,227 - INFO - Traffic sync job started
+2026-01-17 18:56:34,238 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:56:34,239 - INFO - Device expiration check job started
+2026-01-17 18:56:34,239 - INFO - All background jobs started
+2026-01-17 18:56:34,240 - INFO - Background jobs started
+2026-01-17 18:56:34,419 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,420 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,420 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:34,427 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:56:34,428 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:56:34.227035'}
+2026-01-17 18:56:42,085 - INFO - Background jobs stopped
+2026-01-17 18:56:42,085 - INFO - Background jobs stopped
+2026-01-17 18:56:42,085 - INFO - LDAP connection pool closed
+2026-01-17 18:56:46,866 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:46,867 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:46,867 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:46,867 - ERROR - Database connection failed!
+2026-01-17 18:56:46,876 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:56:46,877 - INFO - Traffic sync job started
+2026-01-17 18:56:46,878 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:56:46,878 - INFO - Device expiration check job started
+2026-01-17 18:56:46,879 - INFO - All background jobs started
+2026-01-17 18:56:46,879 - INFO - Background jobs started
+2026-01-17 18:56:46,963 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:56:46,964 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:56:46.877229'}
+2026-01-17 18:56:47,009 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:47,009 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:47,010 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:50,879 - INFO - Background jobs stopped
+2026-01-17 18:56:50,879 - INFO - Background jobs stopped
+2026-01-17 18:56:50,881 - INFO - LDAP connection pool closed
+2026-01-17 18:56:54,141 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:54,141 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:54,141 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:54,141 - ERROR - Database connection failed!
+2026-01-17 18:56:54,149 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:56:54,149 - INFO - Traffic sync job started
+2026-01-17 18:56:54,150 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:56:54,150 - INFO - Device expiration check job started
+2026-01-17 18:56:54,151 - INFO - All background jobs started
+2026-01-17 18:56:54,151 - INFO - Background jobs started
+2026-01-17 18:56:54,187 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:56:54,187 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:56:54.149121'}
+2026-01-17 18:56:54,357 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:54,359 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:54,359 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:55,255 - INFO - Background jobs stopped
+2026-01-17 18:56:55,255 - INFO - Background jobs stopped
+2026-01-17 18:56:55,256 - INFO - LDAP connection pool closed
+2026-01-17 18:56:58,300 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:58,300 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:58,302 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:58,302 - ERROR - Database connection failed!
+2026-01-17 18:56:58,308 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 18:56:58,308 - INFO - Traffic sync job started
+2026-01-17 18:56:58,309 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 18:56:58,309 - INFO - Device expiration check job started
+2026-01-17 18:56:58,309 - INFO - All background jobs started
+2026-01-17 18:56:58,310 - INFO - Background jobs started
+2026-01-17 18:56:58,366 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:56:58,367 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:56:58.308000'}
+2026-01-17 18:56:58,424 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:58,424 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:56:58,428 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 18:57:59,192 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:57:59,193 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:57:59.161449'}
+2026-01-17 18:59:00,482 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 18:59:00,482 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T18:59:00.432406'}
+2026-01-17 19:00:01,077 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:00:01,078 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:00:01.026392'}
+2026-01-17 19:01:01,788 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:01:01,788 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:01:01.723203'}
+2026-01-17 19:02:02,514 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:02:02,515 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:02:02.451937'}
+2026-01-17 19:03:03,206 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:03:03,207 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:03:03.120880'}
+2026-01-17 19:04:03,855 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:04:03,855 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:04:03.806629'}
+2026-01-17 19:05:04,433 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:05:04,433 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:05:04.378195'}
+2026-01-17 19:06:05,039 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:06:05,039 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:06:04.981339'}
+2026-01-17 19:07:05,557 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:07:05,558 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:07:05.528508'}
+2026-01-17 19:08:06,047 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:08:06,047 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:08:06.013730'}
+2026-01-17 19:08:47,418 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,419 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,419 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,419 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:08:47,880 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,880 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,880 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:08:47,880 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:09:06,534 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:09:06,534 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:09:06.496890'}
+2026-01-17 19:10:07,083 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:10:07,083 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:10:07.048217'}
+2026-01-17 19:11:07,646 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:11:07,647 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:11:07.599259'}
+2026-01-17 19:12:08,260 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:12:08,260 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:12:08.232834'}
+2026-01-17 19:13:08,865 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:13:08,866 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:13:08.813182'}
+2026-01-17 19:13:54,608 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:54,608 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:54,608 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:54,609 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:13:55,842 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,842 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,842 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,844 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:13:55,978 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,979 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,979 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:55,979 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:13:56,818 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:56,818 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:56,818 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:13:56,819 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:14:02,018 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,018 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,018 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,018 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:14:02,414 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,414 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,414 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:02,415 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:14:09,359 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:14:09,359 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:14:09.313639'}
+2026-01-17 19:14:34,492 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,492 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,492 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,492 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:14:34,826 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,827 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,827 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:34,827 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:14:37,319 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:37,319 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:37,319 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:14:37,319 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:15:09,821 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:15:09,822 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:15:09.788492'}
+2026-01-17 19:15:55,155 - INFO - Background jobs stopped
+2026-01-17 19:15:55,155 - INFO - Background jobs stopped
+2026-01-17 19:15:55,155 - INFO - LDAP connection pool closed
+2026-01-17 19:16:06,466 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:06,467 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:06,467 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:06,467 - ERROR - Database connection failed!
+2026-01-17 19:16:06,520 - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 19:16:06,520 - INFO - Traffic sync job started
+2026-01-17 19:16:06,525 - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 19:16:06,525 - INFO - Device expiration check job started
+2026-01-17 19:16:06,527 - INFO - All background jobs started
+2026-01-17 19:16:06,527 - INFO - Background jobs started
+2026-01-17 19:16:06,686 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:16:06,687 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:16:06.520314'}
+2026-01-17 19:16:06,716 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:06,716 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:06,717 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:31,020 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:31,020 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:31,022 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:31,022 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:16:41,419 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:41,420 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:41,420 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:16:41,420 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:17:07,193 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:17:07,193 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:17:07.160346'}
+2026-01-17 19:18:07,639 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:18:07,639 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:18:07.609304'}
+2026-01-17 19:18:46,815 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:18:46,815 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:18:46,816 - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 19:18:46,816 - ERROR - Database health check failed: 503: Database connection failed
+2026-01-17 19:19:08,166 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:19:08,166 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:19:08.072545'}
+2026-01-17 19:20:08,649 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:20:08,650 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:20:08.615380'}
+2026-01-17 19:21:09,181 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:21:09,182 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:21:09.150337'}
+2026-01-17 19:22:09,712 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:22:09,713 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:22:09.688421'}
+2026-01-17 19:23:10,249 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:23:10,250 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:23:10.214655'}
+2026-01-17 19:24:10,795 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:24:10,795 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:24:10.748389'}
+2026-01-17 19:25:11,364 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:25:11,364 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:25:11.340450'}
+2026-01-17 19:26:11,946 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:26:11,946 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:26:11.917150'}
+2026-01-17 19:27:12,499 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:27:12,500 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:27:12.470453'}
+2026-01-17 19:28:13,088 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:28:13,089 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:28:13.044417'}
+2026-01-17 19:29:13,728 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:29:13,729 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:29:13.699763'}
+2026-01-17 19:30:14,292 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:30:14,293 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:30:14.261300'}
+2026-01-17 19:31:14,856 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:31:14,857 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:31:14.828996'}
+2026-01-17 19:32:15,451 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:32:15,451 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:32:15.420984'}
+2026-01-17 19:33:15,984 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:33:15,985 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:33:15.957357'}
+2026-01-17 19:34:16,547 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:34:16,548 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:34:16.521123'}
+2026-01-17 19:35:17,188 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:35:17,189 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:35:17.138293'}
+2026-01-17 19:36:17,688 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:36:17,689 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:36:17.654501'}
+2026-01-17 19:37:18,230 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:37:18,231 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:37:18.201538'}
+2026-01-17 19:38:18,781 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:38:18,781 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:38:18.755785'}
+2026-01-17 19:39:19,338 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:39:19,339 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:39:19.314048'}
+2026-01-17 19:40:19,926 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:40:19,927 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:40:19.900089'}
+2026-01-17 19:41:20,469 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:41:20,469 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:41:20.434157'}
+2026-01-17 19:42:21,051 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:42:21,051 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:42:21.022040'}
+2026-01-17 19:43:21,602 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:43:21,603 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:43:21.576505'}
+2026-01-17 19:44:22,179 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:44:22,180 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:44:22.152912'}
+2026-01-17 19:45:22,758 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:45:22,758 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:45:22.729124'}
+2026-01-17 19:46:23,310 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:46:23,310 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:46:23.276543'}
+2026-01-17 19:47:23,860 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:47:23,861 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:47:23.822301'}
+2026-01-17 19:48:24,449 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:48:24,450 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:48:24.422104'}
+2026-01-17 19:49:25,030 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:49:25,031 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:49:24.993823'}
+2026-01-17 19:50:25,683 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:50:25,685 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:50:25.656777'}
+2026-01-17 19:51:26,170 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:51:26,171 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:51:26.142382'}
+2026-01-17 19:52:26,748 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:52:26,748 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:52:26.723272'}
+2026-01-17 19:53:27,335 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:53:27,336 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:53:27.286702'}
+2026-01-17 19:54:27,918 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:54:27,918 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:54:27.887973'}
+2026-01-17 19:55:28,472 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:55:28,472 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:55:28.440054'}
+2026-01-17 19:56:29,073 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:56:29,074 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:56:29.044817'}
+2026-01-17 19:57:29,650 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:57:29,650 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:57:29.596738'}
+2026-01-17 19:58:30,202 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:58:30,202 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:58:30.170196'}
+2026-01-17 19:59:30,758 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 19:59:30,758 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T19:59:30.728990'}
+2026-01-17 20:00:31,307 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:00:31,308 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:00:31.253362'}
+2026-01-17 20:01:31,860 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:01:31,860 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:01:31.827487'}
+2026-01-17 20:02:32,406 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:02:32,407 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:02:32.374115'}
+2026-01-17 20:03:32,953 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:03:32,955 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:03:32.924713'}
+2026-01-17 20:04:33,564 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:04:33,565 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:04:33.539452'}
+2026-01-17 20:05:34,141 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:05:34,141 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:05:34.112391'}
+2026-01-17 20:06:34,694 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:06:34,694 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:06:34.649239'}
+2026-01-17 20:07:35,330 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:07:35,330 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:07:35.304449'}
+2026-01-17 20:08:35,884 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:08:35,884 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:08:35.857829'}
+2026-01-17 20:09:36,499 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:09:36,500 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:09:36.458116'}
+2026-01-17 20:10:37,097 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:10:37,097 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:10:37.077247'}
+2026-01-17 20:11:37,699 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:11:37,699 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:11:37.664332'}
+2026-01-17 20:12:38,329 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:12:38,329 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:12:38.304068'}
+2026-01-17 20:13:38,877 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:13:38,878 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:13:38.846455'}
+2026-01-17 20:14:39,473 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:14:39,473 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:14:39.454401'}
+2026-01-17 20:15:40,026 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:15:40,026 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:15:40.000700'}
+2026-01-17 20:16:38,560 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 20:16:38,560 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 20:16:38,560 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 20:16:40,619 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:16:40,620 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:16:40.581891'}
+2026-01-17 20:17:41,075 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:17:41,075 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:17:41.057805'}
+2026-01-17 20:18:41,559 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:18:41,559 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:18:41.539573'}
+2026-01-17 20:19:41,966 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:19:41,966 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:19:41.918976'}
+2026-01-17 20:20:42,289 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:20:42,289 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:20:42.254673'}
+2026-01-17 20:21:42,601 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:21:42,602 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:21:42.585621'}
+2026-01-17 20:22:42,974 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:22:42,975 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:22:42.922718'}
+2026-01-17 20:23:43,347 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:23:43,348 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:23:43.304459'}
+2026-01-17 20:24:43,701 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:24:43,702 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:24:43.664822'}
+2026-01-17 20:25:44,073 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:25:44,073 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:25:44.055931'}
+2026-01-17 20:26:44,398 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:26:44,398 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:26:44.377267'}
+2026-01-17 20:27:44,720 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:27:44,721 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:27:44.704018'}
+2026-01-17 20:28:45,018 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:28:45,019 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:28:44.998529'}
+2026-01-17 20:29:45,356 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:29:45,356 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:29:45.338878'}
+2026-01-17 20:30:45,722 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:30:45,722 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:30:45.686464'}
+2026-01-17 20:31:46,058 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:31:46,058 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:31:46.041605'}
+2026-01-17 20:32:46,389 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:32:46,389 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:32:46.356945'}
+2026-01-17 20:33:46,687 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:33:46,688 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:33:46.669127'}
+2026-01-17 20:34:47,023 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:34:47,023 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:34:47.002611'}
+2026-01-17 20:35:47,369 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:35:47,369 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:35:47.350490'}
+2026-01-17 20:36:47,717 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:36:47,718 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:36:47.701623'}
+2026-01-17 20:37:48,067 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:37:48,068 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:37:48.050719'}
+2026-01-17 20:38:48,445 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:38:48,446 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:38:48.425378'}
+2026-01-17 20:39:48,799 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:39:48,799 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:39:48.780528'}
+2026-01-17 20:40:49,162 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:40:49,163 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:40:49.135009'}
+2026-01-17 20:41:49,587 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:41:49,587 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:41:49.556428'}
+2026-01-17 20:42:49,930 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:42:49,931 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:42:49.913657'}
+2026-01-17 20:43:50,311 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:43:50,311 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:43:50.292643'}
+2026-01-17 20:44:50,668 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:44:50,668 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:44:50.646904'}
+2026-01-17 20:45:51,031 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:45:51,031 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:45:50.991863'}
+2026-01-17 20:46:51,420 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:46:51,421 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:46:51.403581'}
+2026-01-17 20:47:51,753 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:47:51,753 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:47:51.735570'}
+2026-01-17 20:48:52,096 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:48:52,096 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:48:52.073866'}
+2026-01-17 20:49:52,447 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:49:52,447 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:49:52.428463'}
+2026-01-17 20:50:52,844 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:50:52,844 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:50:52.825404'}
+2026-01-17 20:51:53,246 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:51:53,246 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:51:53.227743'}
+2026-01-17 20:52:53,760 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:52:53,760 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:52:53.736612'}
+2026-01-17 20:53:54,183 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:53:54,183 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:53:54.163964'}
+2026-01-17 20:54:54,613 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:54:54,613 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:54:54.597762'}
+2026-01-17 20:55:55,017 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:55:55,017 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:55:54.996138'}
+2026-01-17 20:56:55,492 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:56:55,493 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:56:55.433327'}
+2026-01-17 20:57:55,943 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:57:55,943 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:57:55.919488'}
+2026-01-17 20:58:56,446 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:58:56,447 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:58:56.417593'}
+2026-01-17 20:59:56,822 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 20:59:56,822 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T20:59:56.804559'}
+2026-01-17 21:00:57,296 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:00:57,296 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:00:57.270676'}
+2026-01-17 21:01:57,843 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:01:57,843 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:01:57.825345'}
+2026-01-17 21:02:58,198 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:02:58,198 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:02:58.155798'}
+2026-01-17 21:03:58,577 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:03:58,578 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:03:58.556605'}
+2026-01-17 21:04:59,060 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:04:59,060 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:04:59.012986'}
+2026-01-17 21:05:59,425 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:05:59,426 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:05:59.407978'}
+2026-01-17 21:06:59,890 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:06:59,890 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:06:59.864818'}
+2026-01-17 21:08:00,363 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:08:00,363 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:08:00.333216'}
+2026-01-17 21:09:00,911 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:09:00,912 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:09:00.892515'}
+2026-01-17 21:10:01,284 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:10:01,284 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:10:01.265196'}
+2026-01-17 21:11:01,778 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:11:01,779 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:11:01.747781'}
+2026-01-17 21:12:02,265 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:12:02,265 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:12:02.234083'}
+2026-01-17 21:13:02,769 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:13:02,769 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:13:02.745159'}
+2026-01-17 21:14:03,253 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:14:03,253 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:14:03.230351'}
+2026-01-17 21:15:03,656 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:15:03,657 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:15:03.639606'}
+2026-01-17 21:16:04,036 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:16:04,036 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:16:04.016006'}
+2026-01-17 21:17:01,366 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 21:17:01,366 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 21:17:01,366 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 21:17:04,511 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:17:04,512 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:17:04.475349'}
+2026-01-17 21:18:04,935 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:18:04,936 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:18:04.918622'}
+2026-01-17 21:19:05,445 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:19:05,446 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:19:05.418500'}
+2026-01-17 21:20:05,963 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:20:05,963 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:20:05.916005'}
+2026-01-17 21:21:06,513 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:21:06,513 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:21:06.495725'}
+2026-01-17 21:22:06,897 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:22:06,897 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:22:06.873078'}
+2026-01-17 21:23:07,430 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:23:07,431 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:23:07.411030'}
+2026-01-17 21:24:07,930 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:24:07,930 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:24:07.916907'}
+2026-01-17 21:25:08,467 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:25:08,467 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:25:08.399111'}
+2026-01-17 21:26:08,890 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:26:08,890 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:26:08.856687'}
+2026-01-17 21:27:09,394 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:27:09,394 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:27:09.354676'}
+2026-01-17 21:28:09,835 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:28:09,835 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:28:09.816197'}
+2026-01-17 21:29:10,322 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:29:10,323 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:29:10.304801'}
+2026-01-17 21:30:10,782 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:30:10,782 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:30:10.764433'}
+2026-01-17 21:31:11,244 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:31:11,245 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:31:11.226286'}
+2026-01-17 21:32:11,544 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:32:11,544 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:32:11.527102'}
+2026-01-17 21:33:12,010 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:33:12,010 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:33:11.984761'}
+2026-01-17 21:34:12,432 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:34:12,432 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:34:12.411971'}
+2026-01-17 21:35:12,861 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:35:12,861 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:35:12.844662'}
+2026-01-17 21:36:13,281 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:36:13,281 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:36:13.232990'}
+2026-01-17 21:37:13,607 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:37:13,608 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:37:13.589072'}
+2026-01-17 21:38:14,063 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:38:14,063 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:38:14.022818'}
+2026-01-17 21:39:14,638 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:39:14,638 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:39:14.603788'}
+2026-01-17 21:40:15,073 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:40:15,073 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:40:15.052824'}
+2026-01-17 21:41:15,517 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:41:15,517 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:41:15.495715'}
+2026-01-17 21:42:15,941 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:42:15,941 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:42:15.922652'}
+2026-01-17 21:43:16,389 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:43:16,389 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:43:16.369478'}
+2026-01-17 21:44:16,828 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:44:16,828 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:44:16.803655'}
+2026-01-17 21:45:17,265 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:45:17,266 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:45:17.231811'}
+2026-01-17 21:46:17,709 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:46:17,710 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:46:17.687921'}
+2026-01-17 21:47:18,112 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:47:18,114 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:47:18.088731'}
+2026-01-17 21:48:18,529 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:48:18,529 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:48:18.513209'}
+2026-01-17 21:49:19,045 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:49:19,045 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:49:19.029435'}
+2026-01-17 21:50:19,418 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:50:19,418 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:50:19.398328'}
+2026-01-17 21:51:19,796 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:51:19,796 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:51:19.778199'}
+2026-01-17 21:52:20,253 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:52:20,253 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:52:20.232925'}
+2026-01-17 21:53:20,749 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:53:20,751 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:53:20.727780'}
+2026-01-17 21:54:21,216 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:54:21,216 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:54:21.174419'}
+2026-01-17 21:55:21,657 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:55:21,657 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:55:21.640187'}
+2026-01-17 21:56:22,113 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:56:22,114 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:56:22.079490'}
+2026-01-17 21:57:22,512 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:57:22,513 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:57:22.490275'}
+2026-01-17 21:58:22,892 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:58:22,892 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:58:22.873137'}
+2026-01-17 21:59:23,415 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 21:59:23,415 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T21:59:23.384920'}
+2026-01-17 22:00:23,876 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:00:23,876 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:00:23.857340'}
+2026-01-17 22:01:24,303 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:01:24,305 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:01:24.283294'}
+2026-01-17 22:02:24,735 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:02:24,735 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:02:24.704814'}
+2026-01-17 22:03:25,494 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:03:25,494 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:03:25.475103'}
+2026-01-17 22:04:25,908 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:04:25,908 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:04:25.883879'}
+2026-01-17 22:05:26,290 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:05:26,291 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:05:26.267517'}
+2026-01-17 22:06:26,626 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:06:26,626 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:06:26.607279'}
+2026-01-17 22:07:27,095 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:07:27,096 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:07:27.070901'}
+2026-01-17 22:08:27,523 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:08:27,523 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:08:27.501370'}
+2026-01-17 22:09:28,006 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:09:28,042 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:09:27.938126'}
+2026-01-17 22:10:29,437 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:10:29,438 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:10:29.400880'}
+2026-01-17 22:11:30,128 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:11:30,129 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:11:30.107431'}
+2026-01-17 22:12:30,633 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:12:30,633 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:12:30.612046'}
+2026-01-17 22:13:31,183 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:13:31,184 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:13:31.156853'}
+2026-01-17 22:14:31,643 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:14:31,643 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:14:31.623741'}
+2026-01-17 22:15:32,071 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:15:32,071 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:15:32.048572'}
+2026-01-17 22:16:32,648 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:16:32,648 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:16:32.620149'}
+2026-01-17 22:17:29,123 - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 22:17:29,124 - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 22:17:29,124 - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 22:17:33,073 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:17:33,073 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:17:33.055094'}
+2026-01-17 22:18:33,610 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:18:33,610 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:18:33.590672'}
+2026-01-17 22:19:34,083 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:19:34,083 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:19:34.062312'}
+2026-01-17 22:20:34,587 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:20:34,588 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:20:34.545269'}
+2026-01-17 22:21:35,164 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:21:35,164 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:21:35.129575'}
+2026-01-17 22:22:35,612 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:22:35,613 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:22:35.581988'}
+2026-01-17 22:23:36,003 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:23:36,003 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:23:35.974809'}
+2026-01-17 22:24:36,453 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:24:36,453 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:24:36.437514'}
+2026-01-17 22:25:36,890 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:25:36,892 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:25:36.853554'}
+2026-01-17 22:26:37,309 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:26:37,311 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:26:37.280204'}
+2026-01-17 22:27:37,862 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:27:37,862 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:27:37.788219'}
+2026-01-17 22:28:38,338 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:28:38,338 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:28:38.311438'}
+2026-01-17 22:29:38,921 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:29:38,922 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:29:38.877670'}
+2026-01-17 22:30:39,403 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:30:39,404 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:30:39.341375'}
+2026-01-17 22:31:39,962 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:31:39,962 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:31:39.882269'}
+2026-01-17 22:32:40,510 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:32:40,511 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:32:40.441536'}
+2026-01-17 22:33:41,027 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:33:41,027 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:33:40.995912'}
+2026-01-17 22:34:41,644 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:34:41,645 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:34:41.534230'}
+2026-01-17 22:35:42,286 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:35:42,286 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:35:42.257134'}
+2026-01-17 22:36:42,736 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:36:42,737 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:36:42.711177'}
+2026-01-17 22:37:43,246 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:37:43,246 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:37:43.214967'}
+2026-01-17 22:38:43,779 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:38:43,780 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:38:43.748519'}
+2026-01-17 22:39:44,444 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:39:44,444 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:39:44.413665'}
+2026-01-17 22:40:44,922 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:40:44,923 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:40:44.893416'}
+2026-01-17 22:41:45,501 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:41:45,502 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:41:45.473266'}
+2026-01-17 22:42:46,084 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:42:46,084 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:42:46.054309'}
+2026-01-17 22:43:46,630 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:43:46,630 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:43:46.586319'}
+2026-01-17 22:44:47,199 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:44:47,199 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:44:47.158736'}
+2026-01-17 22:45:47,796 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:45:47,797 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:45:47.720567'}
+2026-01-17 22:46:48,290 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:46:48,291 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:46:48.259349'}
+2026-01-17 22:47:48,799 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:47:48,800 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:47:48.770722'}
+2026-01-17 22:48:49,245 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:48:49,246 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:48:49.217714'}
+2026-01-17 22:49:49,792 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:49:49,792 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:49:49.764278'}
+2026-01-17 22:50:50,385 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:50:50,385 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:50:50.360911'}
+2026-01-17 22:51:50,962 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:51:50,964 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:51:50.939034'}
+2026-01-17 22:52:51,472 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:52:51,473 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:52:51.446063'}
+2026-01-17 22:53:52,072 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:53:52,073 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:53:52.038797'}
+2026-01-17 22:54:52,683 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:54:52,683 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:54:52.636241'}
+2026-01-17 22:55:53,242 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:55:53,242 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:55:53.213663'}
+2026-01-17 22:56:53,839 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:56:53,839 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:56:53.809520'}
+2026-01-17 22:57:54,328 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:57:54,330 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:57:54.296858'}
+2026-01-17 22:58:54,862 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:58:54,863 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:58:54.833720'}
+2026-01-17 22:59:55,421 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 22:59:55,422 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T22:59:55.394499'}
+2026-01-17 23:00:55,924 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:00:55,925 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:00:55.878944'}
+2026-01-17 23:01:56,492 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:01:56,494 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:01:56.463511'}
+2026-01-17 23:02:57,051 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:02:57,052 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:02:57.021930'}
+2026-01-17 23:03:57,625 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:03:57,626 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:03:57.585180'}
+2026-01-17 23:04:58,149 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:04:58,150 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:04:58.121362'}
+2026-01-17 23:05:58,617 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:05:58,617 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:05:58.589945'}
+2026-01-17 23:06:59,225 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:06:59,225 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:06:59.159345'}
+2026-01-17 23:07:59,900 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:07:59,901 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:07:59.858145'}
+2026-01-17 23:09:00,366 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:09:00,366 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:09:00.327422'}
+2026-01-17 23:10:00,948 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:10:00,949 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:10:00.909215'}
+2026-01-17 23:11:01,457 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:11:01,458 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:11:01.428026'}
+2026-01-17 23:12:01,992 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:12:01,993 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:12:01.955565'}
+2026-01-17 23:13:02,479 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:13:02,479 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:13:02.435550'}
+2026-01-17 23:14:02,970 - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:14:02,971 - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:14:02.936860'}
+2026-01-17 23:14:22,128 - INFO - Background jobs stopped
+2026-01-17 23:14:22,128 - INFO - Background jobs stopped
+2026-01-17 23:14:22,130 - INFO - LDAP connection pool closed
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Database connection test failed: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Database connection failed!
+2026-01-17 23:53:57 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-17 23:53:57 - wireguard-backend - INFO - Traffic sync job started
+2026-01-17 23:53:57 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-17 23:53:57 - wireguard-backend - INFO - Device expiration check job started
+2026-01-17 23:53:57 - wireguard-backend - INFO - All background jobs started
+2026-01-17 23:53:57 - wireguard-backend - INFO - Background jobs started
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-17 23:53:57 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-17T23:53:57.136555'}
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Error creating MySQL connection to 43.129.55.182:3306: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Database connection error: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:53:57 - wireguard-backend - ERROR - Error in device expiration check job: (1045, "Access denied for user 'root'@'114.79.55.254' (using password: YES)")
+2026-01-17 23:54:28 - wireguard-backend - INFO - Background jobs stopped
+2026-01-17 23:54:28 - wireguard-backend - INFO - Background jobs stopped
+2026-01-17 23:54:28 - wireguard-backend - INFO - LDAP connection pool closed

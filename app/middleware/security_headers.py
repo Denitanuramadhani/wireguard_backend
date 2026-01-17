@@ -1,42 +1,34 @@
-"""
-Security Headers Middleware
-Adds security headers to all responses
-"""
-
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.responses import Response
 
+EXCLUDE_PATHS = ["/docs", "/redoc", "/openapi.json"]
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
-    """
-    Middleware untuk add security headers ke semua responses
-    """
-    
     async def dispatch(self, request: Request, call_next):
+        # ✅ BIAR SWAGGER NGGAK KEHALANG
+        if request.url.path in EXCLUDE_PATHS:
+            return await call_next(request)
+
         response = await call_next(request)
-        
-        # Security headers
+
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "SAMEORIGIN"
         response.headers["X-XSS-Protection"] = "1; mode=block"
         response.headers["Referrer-Policy"] = "no-referrer-when-downgrade"
         response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
-        
-        # Content Security Policy (adjust sesuai kebutuhan)
-        csp = (
+
+        # ⚠️ CSP terlalu ketat bikin Swagger blank
+        # Jadi JANGAN dipasang ke /docs
+        response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline'; "
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
             "style-src 'self' 'unsafe-inline'; "
             "img-src 'self' data: https:; "
             "font-src 'self' data:; "
-            "connect-src 'self'; "
-            "frame-ancestors 'self';"
+            "connect-src 'self' http: https:; "
         )
-        response.headers["Content-Security-Policy"] = csp
-        
-        # HSTS (jika menggunakan HTTPS)
+
         if request.url.scheme == "https":
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
-        
+
         return response

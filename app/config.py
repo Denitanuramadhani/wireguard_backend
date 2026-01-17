@@ -19,7 +19,8 @@ LDAP_ADMIN_PASSWORD = os.getenv("LDAP_ADMIN_PASSWORD", "")
 # Hanya menyimpan: device, key, IP, status VPN
 # User identity & role tetap di LDAP (117.53.44.59)
 # ======================
-MYSQL_HOST = os.getenv("MYSQL_HOST", "117.53.45.105")  # Remote MySQL server
+# MYSQL_HOST = os.getenv("MYSQL_HOST", "117.53.45.105")  # Remote MySQL server
+MYSQL_HOST = os.getenv("MYSQL_HOST", "43.129.55.182")  # Remote MySQL server
 MYSQL_PORT = int(os.getenv("MYSQL_PORT", "3306"))
 MYSQL_USER = os.getenv("MYSQL_USER", "wgadmin")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
