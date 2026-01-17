@@ -55,7 +55,7 @@ class AlertManager:
             details={
                 "severity": severity,
                 "message": message,
-                **details or {}
+                **(details or {})
             }
         )
         
