@@ -8,16 +8,9 @@ WORKDIR /app
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
-<<<<<<< HEAD
     gcc \
     g++ \
     python3-dev \
-=======
-    wireguard-tools \
-    sudo \
-    curl \
-    default-mysql-client \
->>>>>>> a26638eb4b8af0e3d06c3e2f99de8ce21e12449f
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first untuk better caching

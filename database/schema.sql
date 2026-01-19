@@ -46,13 +46,20 @@ CREATE TABLE IF NOT EXISTS vpn_devices (
     -- Optional: Encrypted private key (for backup)
     private_key_encrypted TEXT NULL,
     
+    -- QR Code (temporary, expires)
+    qr_code_base64 TEXT NULL COMMENT 'QR code (base64) - temporary',
+    qr_code_expires_at TIMESTAMP NULL COMMENT 'QR code expiration timestamp',
+    
     INDEX idx_ldap_uid (ldap_uid),
     INDEX idx_ldap_uid_status (ldap_uid, status),
     INDEX idx_status (status),
     INDEX idx_public_key (public_key),
     INDEX idx_vpn_ip (vpn_ip),
     INDEX idx_last_seen (last_seen),
-    INDEX idx_expires_at (expires_at)
+    INDEX idx_expires_at (expires_at),
+    INDEX idx_qr_expires_at (qr_code_expires_at),
+    INDEX idx_created_at (created_at),
+    INDEX idx_status_created_at (status, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='VPN devices table';
 
 -- ============================================
@@ -77,7 +84,9 @@ CREATE TABLE IF NOT EXISTS vpn_traffic_logs (
     INDEX idx_device_id (device_id),
     INDEX idx_ldap_uid (ldap_uid),
     INDEX idx_recorded_at (recorded_at),
-    INDEX idx_device_recorded (device_id, recorded_at)
+    INDEX idx_device_recorded (device_id, recorded_at),
+    INDEX idx_traffic_device_recorded (device_id, recorded_at),
+    INDEX idx_traffic_ldap_recorded (ldap_uid, recorded_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Traffic logs for analytics';
 
 -- ============================================
@@ -96,7 +105,8 @@ CREATE TABLE IF NOT EXISTS vpn_revoke_history (
     
     INDEX idx_ldap_uid (ldap_uid),
     INDEX idx_revoked_at (revoked_at),
-    INDEX idx_revoked_by (revoked_by)
+    INDEX idx_revoked_by (revoked_by),
+    INDEX idx_revoke_ldap_at (ldap_uid, revoked_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Revoke history audit log';
 
 -- ============================================
@@ -136,7 +146,10 @@ CREATE TABLE IF NOT EXISTS vpn_audit_logs (
     INDEX idx_action (action),
     INDEX idx_ldap_uid (ldap_uid),
     INDEX idx_performed_by (performed_by),
-    INDEX idx_created_at (created_at)
+    INDEX idx_created_at (created_at),
+    INDEX idx_audit_action_created (action, created_at),
+    INDEX idx_audit_ldap_created (ldap_uid, created_at),
+    INDEX idx_audit_performed_by (performed_by, created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Security audit logs';
 
 -- ============================================

@@ -8,6 +8,15 @@ import sys
 from pathlib import Path
 from app.database.connection import get_db_connection
 from app.logger import logger
+import logging
+
+# Ensure logger outputs to console for migration runner
+if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(logging.Formatter("%(levelname)s - %(message)s"))
+    logger.addHandler(console_handler)
+    logger.setLevel(logging.INFO)
 
 # Get migrations directory
 MIGRATIONS_DIR = Path(__file__).parent
@@ -42,7 +51,12 @@ def get_applied_migrations():
         with get_db_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT migration_file FROM schema_migrations ORDER BY applied_at")
-            return {row[0] for row in cursor.fetchall()}
+            rows = cursor.fetchall()
+            # Handle both DictCursor and regular cursor
+            if rows and isinstance(rows[0], dict):
+                return {row['migration_file'] for row in rows}
+            else:
+                return {row[0] for row in rows}
     except Exception as e:
         logger.error(f"Error getting applied migrations: {e}")
         raise
@@ -159,6 +173,44 @@ def run_migration(migration_file):
                         logger.debug(f"Column already exists (skipping): {statement[:80]}...")
                         continue
                     
+                    # Special handling for CREATE INDEX IF NOT EXISTS (MySQL < 8.0.19 doesn't support it)
+                    if 'create index' in statement.lower() and 'if not exists' in statement.lower():
+                        # Try to extract index name and table
+                        import re
+                        match = re.search(r'CREATE INDEX IF NOT EXISTS (\w+) ON (\w+)', statement, re.IGNORECASE)
+                        if match:
+                            index_name = match.group(1)
+                            table_name = match.group(2)
+                            # Check if index exists, if yes, skip
+                            try:
+                                check_stmt = f"""
+                                    SELECT COUNT(*) as cnt FROM INFORMATION_SCHEMA.STATISTICS 
+                                    WHERE TABLE_SCHEMA = DATABASE() 
+                                    AND TABLE_NAME = '{table_name}' 
+                                    AND INDEX_NAME = '{index_name}'
+                                """
+                                cursor.execute(check_stmt)
+                                result = cursor.fetchone()
+                                if isinstance(result, dict):
+                                    count = result.get('cnt', 0)
+                                else:
+                                    count = result[0] if result else 0
+                                
+                                if count > 0:
+                                    logger.debug(f"Index {index_name} already exists (skipping)")
+                                    continue
+                                else:
+                                    # Index doesn't exist, try to create without IF NOT EXISTS
+                                    new_stmt = statement.replace('IF NOT EXISTS', '').strip()
+                                    if new_stmt.endswith(';'):
+                                        new_stmt = new_stmt[:-1]
+                                    cursor.execute(new_stmt)
+                                    logger.debug(f"Created index {index_name} on {table_name}")
+                                    continue
+                            except Exception as check_error:
+                                logger.debug(f"Error checking index existence: {check_error}")
+                                # Fall through to normal error handling
+                    
                     if any(skip_conditions):
                         logger.debug(f"Object already exists (skipping): {statement[:80]}...")
                         # Continue execution - this is expected for idempotent migrations
@@ -171,7 +223,7 @@ def run_migration(migration_file):
             
             conn.commit()
             mark_migration_applied(migration_file)
-            logger.info(f"✓ Migration {migration_file} applied successfully")
+            logger.info(f"[OK] Migration {migration_file} applied successfully")
             
     except Exception as e:
         logger.error(f"Error running migration {migration_file}: {e}")
@@ -219,7 +271,7 @@ def run_all_migrations(dry_run=False):
         return None
     
     if applied:
-        logger.info(f"✓ Successfully applied {len(applied)} migration(s)")
+        logger.info(f"[OK] Successfully applied {len(applied)} migration(s)")
     
     return applied
 
@@ -235,7 +287,7 @@ def list_migrations():
     print("\nMigration Status:")
     print("=" * 60)
     for migration in all_migrations:
-        status = "✓ APPLIED" if migration in applied else "⏳ PENDING"
+        status = "[APPLIED]" if migration in applied else "[PENDING]"
         print(f"{status:12} | {migration}")
     print("=" * 60)
     print(f"\nTotal: {len(all_migrations)} migrations")
