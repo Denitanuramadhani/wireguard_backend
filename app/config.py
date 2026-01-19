@@ -88,3 +88,10 @@ if not ENCRYPTION_KEY:
 # DEVICE EXPIRATION CONFIG
 # ======================
 DEVICE_EXPIRATION_DAYS = int(os.getenv("DEVICE_EXPIRATION_DAYS", "90"))  # Auto-revoke setelah 90 hari tidak digunakan
+
+# ======================
+# SECURITY OVERRIDES (USE WITH CAUTION!)
+# ======================
+# Allow /admin/add-user without authentication (NOT RECOMMENDED for production!)
+# Set to "true" to disable auth requirement for add-user endpoint
+ALLOW_NO_AUTH_ADD_USER = os.getenv("ALLOW_NO_AUTH_ADD_USER", "false").lower() == "true"

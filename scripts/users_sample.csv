@@ -1,0 +1,5 @@
+username,password,max_devices,wireguard_enabled
+user1,password123,3,FALSE
+user2,password123,5,TRUE
+admin,admin123,10,TRUE
+

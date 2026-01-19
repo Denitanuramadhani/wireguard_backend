@@ -73,28 +73,38 @@ See `docs/DEPLOYMENT_GUIDE.md` untuk detailed deployment instructions.
 - [Admin Guide](docs/ADMIN_GUIDE.md)
 - [User Guide](docs/USER_GUIDE.md)
 - [Backup & Restore](docs/BACKUP_RESTORE.md)
-- [Architecture Overview](ARCHITECTURE.md)
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Setup Guides](docs/guides/README.md) - Docker, MySQL, Production setup
+- [Development History](docs/history/README.md) - Phase summaries
 
 ## Project Structure
 
 ```
 wireguard-backend/
-├── app/
-│   ├── core/           # Core utilities (LDAP, cache, encryption)
-│   ├── database/       # Database connection & queries
-│   ├── middleware/     # Middleware (auth, security, graceful degradation)
-│   ├── routers/        # API endpoints
-│   ├── services/       # Business logic
-│   └── wg/            # WireGuard utilities
+├── app/                    # Application code
+│   ├── auth/              # Authentication (JWT)
+│   ├── core/              # Core utilities (LDAP, cache, encryption)
+│   ├── database/          # Database connection & queries
+│   ├── middleware/         # Middleware (auth, security, graceful degradation)
+│   ├── routers/            # API endpoints
+│   ├── services/           # Business logic
+│   └── wg/                # WireGuard utilities
 ├── database/
-│   ├── migrations/     # Database migrations
-│   └── schema.sql     # Database schema
-├── docs/              # Documentation
-├── ldap/              # LDAP schema extensions
-├── nginx/             # Nginx configuration
-├── scripts/           # Setup scripts
-├── systemd/           # Systemd service files
-└── tests/             # Test files
+│   ├── migrations/         # Database migrations
+│   └── schema.sql         # Database schema
+├── docs/                   # Documentation
+│   ├── guides/             # Setup & deployment guides
+│   └── history/            # Development phase summaries
+├── ldap/                   # LDAP schema & scripts
+│   ├── scripts/            # LDAP operation scripts (LDIF files)
+│   └── wireguard.schema   # WireGuard LDAP schema extension
+├── scripts/                # Setup & utility scripts
+├── systemd/                # Systemd service files
+├── tests/                  # Test files
+├── data/                   # Runtime data (gitignored)
+│   ├── generated_configs/ # Generated WireGuard configs
+│   └── allocated_ips.json # IP allocation tracking
+└── logs/                   # Application logs (gitignored)
 ```
 
 ## Environment Variables

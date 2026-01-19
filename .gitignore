@@ -42,6 +42,7 @@ env/
 *.log
 backend.log
 logs/
+**/logs/
 
 # Database
 *.db
@@ -50,6 +51,8 @@ logs/
 
 # Generated configs (optional - bisa di-ignore jika tidak perlu di git)
 generated_configs/
+data/generated_configs/
+data/allocated_ips.json
 *.conf
 *.png
 
