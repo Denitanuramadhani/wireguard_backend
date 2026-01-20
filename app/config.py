@@ -95,3 +95,5 @@ DEVICE_EXPIRATION_DAYS = int(os.getenv("DEVICE_EXPIRATION_DAYS", "90"))  # Auto-
 # Allow /admin/add-user without authentication (NOT RECOMMENDED for production!)
 # Set to "true" to disable auth requirement for add-user endpoint
 ALLOW_NO_AUTH_ADD_USER = os.getenv("ALLOW_NO_AUTH_ADD_USER", "false").lower() == "true"
+
+PASSWORD_HASHER = os.getenv("PASSWORD_HASHER", "auto")
