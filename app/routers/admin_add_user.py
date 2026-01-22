@@ -253,10 +253,10 @@ def create_ldap_user(username: str, password: str, uid_number: int, gid_number: 
 #        return False
 
     # Hash password (auto: slappasswd → python SSHA fallback)
-    logger.debug(f"[LDAP] Hashing password for user: {username}")
+    logger.info(f"[LDAP] Hashing password for user: {username} (mode: {PASSWORD_HASHER})")
     try:
         hashed_pass = hash_password(password, PASSWORD_HASHER)
-        logger.debug("[LDAP] Password hashed successfully")
+        logger.info(f"[LDAP] Password hashed successfully (hash length: {len(hashed_pass)}, prefix: {hashed_pass[:10]}...)")
     except Exception as e:
         logger.error(f"[LDAP] Failed to hash password: {e}", exc_info=True)
         return False

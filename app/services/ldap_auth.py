@@ -62,7 +62,7 @@ def ldap_authenticate(username: str, password: str) -> bool:
         # Format user DN
         try:
             user_dn = LDAP_USER_DN.format(username)
-            logger.debug(f"[LDAP AUTH] User DN: {user_dn}")
+            logger.info(f"[LDAP AUTH] Attempting login for username={username}, User DN: {user_dn}")
         except Exception as e:
             logger.error(
                 f"[LDAP AUTH ERROR] Failed to format user DN for {username}: {e}",
@@ -103,7 +103,8 @@ def ldap_authenticate(username: str, password: str) -> bool:
                 
         except LDAPInvalidCredentialsResult as e:
             # Invalid credentials - ini expected, return False (bukan error)
-            logger.debug(f"[LDAP AUTH] Invalid credentials for {username}: {e}")
+            logger.warning(f"[LDAP AUTH] Invalid credentials for {username}. User DN used: {user_dn}")
+            logger.debug(f"[LDAP AUTH] Invalid credentials details: {e}")
             return False
             
         except LDAPBindError as e:
@@ -112,7 +113,8 @@ def ldap_authenticate(username: str, password: str) -> bool:
             
             # Error code 49 = Invalid credentials
             if error_code == 49:
-                logger.debug(f"[LDAP AUTH] Invalid credentials for {username} (error code: {error_code})")
+                logger.warning(f"[LDAP AUTH] Invalid credentials for {username} (error code: {error_code}). User DN used: {user_dn}")
+                logger.debug(f"[LDAP AUTH] Bind error details: {e}")
                 return False
             else:
                 # Other bind errors - re-raise untuk handling di caller

@@ -28,6 +28,8 @@ from app.config import REDIS_URL, ENVIRONMENT
 @app.on_event("startup")
 async def startup():
     # Initialize Redis for rate limiting
+    from app.core.optional_rate_limiter import set_redis_available
+    
     try:
         redis = aioredis.from_url(
             REDIS_URL,
@@ -35,8 +37,10 @@ async def startup():
             decode_responses=True
         )
         await FastAPILimiter.init(redis)
+        set_redis_available(True)
         logger.info("Redis connection successful - Rate limiting enabled")
     except Exception as e:
+        set_redis_available(False)
         if ENVIRONMENT == "development":
             logger.warning(f"Redis connection failed: {e}. Rate limiting disabled. This is OK for development.")
             logger.warning("To enable rate limiting, start Redis: redis-server")

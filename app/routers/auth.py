@@ -1,7 +1,6 @@
 import time
 import jwt
 from fastapi import APIRouter, HTTPException, Request, Depends
-from fastapi_limiter.depends import RateLimiter
 from app.services.ldap_auth import ldap_authenticate
 from app.core.ldap_client import check_wireguard_enabled, get_max_devices
 from app.core.audit_logger import log_audit_event
@@ -10,31 +9,13 @@ from app.config import JWT_SECRET, JWT_ALGO
 from app.logger import logger
 from app.middleware.auth_middleware import create_refresh_token, verify_refresh_token
 from app.core.login_logger import log_login_success, log_login_failed, log_refresh_token
+from app.core.optional_rate_limiter import optional_rate_limiter
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
 # Default values untuk WireGuard info jika gagal fetch dari LDAP
 DEFAULT_WIREGUARD_ENABLED = False
 DEFAULT_MAX_DEVICES = 3
-
-
-# FIXED: Safe RateLimiter wrapper untuk handle Redis unavailability
-def safe_rate_limiter():
-    """
-    Safe rate limiter wrapper
-    Jika Redis tidak tersedia, skip rate limiting (tidak block request)
-    """
-    try:
-        # Try to create RateLimiter dependency
-        # Jika Redis tidak tersedia, ini akan raise exception di runtime
-        # Exception akan di-catch oleh graceful_degradation middleware
-        return Depends(RateLimiter(times=100, seconds=60))
-    except Exception as e:
-        # FIXED: Jika RateLimiter gagal saat initialization, return no-op dependency
-        logger.warning(f"RateLimiter initialization failed: {e}. Rate limiting disabled for this request.")
-        def noop():
-            pass
-        return Depends(noop)
 
 
 def create_jwt(username: str) -> str:
@@ -143,21 +124,13 @@ def safe_get_client_ip(request: Request) -> str:
         return "unknown"
 
 
-# FIXED: RateLimiter dependency - jika Redis tidak tersedia, exception akan di-catch oleh
-# graceful_degradation middleware yang akan return 503 (bukan 500)
-# Middleware sudah handle Redis/RateLimiter errors dengan graceful degradation
-@router.post("/login", dependencies=[Depends(RateLimiter(times=100, seconds=60))])
+@router.post("/login", dependencies=[optional_rate_limiter(times=100, seconds=60)])
 def login(data: dict, request: Request):
     """
     Login endpoint dengan error handling yang aman
-    FIXED: Tidak pernah return 500, selalu handle error dengan jelas
     
-    Rate limiting: Jika Redis tidak tersedia, rate limiting di-skip (tidak block request)
+    Rate limiting: Optional - skip jika Redis tidak tersedia
     """
-    # FIXED: Rate limiting di-handle oleh FastAPI dependency injection
-    # Jika Redis tidak tersedia, RateLimiter akan raise exception
-    # Exception akan di-catch oleh graceful_degradation middleware (return 503)
-    # Atau jika middleware tidak catch, akan masuk ke catch-all exception handler di bawah
     
     # #region agent log
     import json
@@ -226,6 +199,7 @@ def login(data: dict, request: Request):
         logger.info(f"[LOGIN] Attempt by username={username} from IP={client_ip}")
         
         # Step 1: LDAP Authentication
+        logger.debug(f"[LOGIN] Step 1: Starting LDAP authentication for {username}")
         # #region agent log
         try:
             with open(r'c:\wireguard_backend\.cursor\debug.log', 'a', encoding='utf-8') as f:
@@ -235,6 +209,7 @@ def login(data: dict, request: Request):
         
         try:
             auth_result = ldap_authenticate(username, password)
+            logger.info(f"[LOGIN] LDAP authentication result for {username}: {auth_result}")
             # #region agent log
             try:
                 with open(r'c:\wireguard_backend\.cursor\debug.log', 'a', encoding='utf-8') as f:
@@ -295,30 +270,32 @@ def login(data: dict, request: Request):
                 error_message="Invalid username or password",
                 reason="invalid_credentials"
             )
-        
-        # Audit log untuk failed login
-        try:
-            log_audit_event(
-                action="login_failed",
-                performed_by=username,
-                ip_address=client_ip,
-                details={"username": username, "reason": "Invalid credentials"}
+            
+            # Audit log untuk failed login
+            try:
+                log_audit_event(
+                    action="login_failed",
+                    performed_by=username,
+                    ip_address=client_ip,
+                    details={"username": username, "reason": "Invalid credentials"}
+                )
+            except Exception as audit_error:
+                logger.error(f"Failed to log audit event: {audit_error}")
+            
+            raise HTTPException(
+                status_code=401,
+                detail="Invalid username or password"
             )
-        except Exception as audit_error:
-            logger.error(f"Failed to log audit event: {audit_error}")
-        
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid username or password"
-        )
         
         # Step 2: Get WireGuard info (tidak block login jika gagal)
+        logger.info(f"[LOGIN] LDAP authentication successful for {username}, proceeding to get WireGuard info")
         wireguard_enabled = DEFAULT_WIREGUARD_ENABLED
         max_devices = DEFAULT_MAX_DEVICES
         
         try:
+            logger.debug(f"[LOGIN] Checking wireguardEnabled for {username}")
             wireguard_enabled = check_wireguard_enabled(username)
-            logger.debug(f"[LOGIN] WireGuard enabled check for {username}: {wireguard_enabled}")
+            logger.info(f"[LOGIN] WireGuard enabled check for {username}: {wireguard_enabled}")
         except Exception as e:
             logger.error(
                 f"[LOGIN WARNING] Failed to check wireguardEnabled for {username}: {e}. "
@@ -328,8 +305,9 @@ def login(data: dict, request: Request):
             # Tidak raise error, gunakan default value
         
         try:
+            logger.debug(f"[LOGIN] Getting max_devices for {username}")
             max_devices = get_max_devices(username)
-            logger.debug(f"[LOGIN] Max devices for {username}: {max_devices}")
+            logger.info(f"[LOGIN] Max devices for {username}: {max_devices}")
         except Exception as e:
             logger.error(
                 f"[LOGIN WARNING] Failed to get max_devices for {username}: {e}. "
