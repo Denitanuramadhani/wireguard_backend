@@ -30,6 +30,11 @@ Migration files harus dijalankan secara berurutan berdasarkan prefix angka:
    - Menambah berbagai index untuk optimasi query
    - Phase 8: Performance Optimization & Caching
 
+4. **004_add_users_table.sql** - Add Users Table for Role-based Authorization
+   - Membuat tabel `users` untuk menyimpan user roles
+   - User identity tetap di LDAP, MySQL hanya menyimpan role untuk authorization
+   - Kolom: username, role (user/admin), created_at, updated_at
+
 ## Menjalankan Migrations
 
 ### 1. Manual (Recommended untuk Production)
@@ -186,3 +191,4 @@ async def startup():
 | 001_initial_schema.sql | Base schema | Phase 1 | Manual setup |
 | 002_add_qr_expiration.sql | QR expiration support | Phase 7 | - |
 | 003_add_performance_indexes.sql | Performance indexes | Phase 8 | - |
+| 004_add_users_table.sql | Users table for role-based authorization | - | - |

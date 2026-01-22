@@ -1,13 +1,225 @@
-2026-01-22 21:57:13 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
-2026-01-22 21:57:13 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
-2026-01-22 21:57:13 - wireguard-backend - INFO - Database connection test successful
-2026-01-22 21:57:13 - wireguard-backend - INFO - Database connection successful
-2026-01-22 21:57:13 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
-2026-01-22 21:57:13 - wireguard-backend - INFO - Traffic sync job started
-2026-01-22 21:57:13 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
-2026-01-22 21:57:13 - wireguard-backend - INFO - Device expiration check job started
-2026-01-22 21:57:13 - wireguard-backend - INFO - All background jobs started
-2026-01-22 21:57:13 - wireguard-backend - INFO - Background jobs started
-2026-01-22 21:57:13 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T21:57:13.767601'}
-2026-01-22 21:57:13 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
-2026-01-22 21:57:13 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T21:57:13.766107'}
+2026-01-22 22:30:04 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:30:04 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:30:04.226039'}
+2026-01-22 22:31:04 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:31:04 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:31:04.726924'}
+2026-01-22 22:32:05 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:32:05 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:32:05.114089'}
+2026-01-22 22:33:05 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:33:05 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:33:05.591456'}
+2026-01-22 22:34:06 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:34:06 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:34:06.065943'}
+2026-01-22 22:35:06 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:35:06 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:35:06.580250'}
+2026-01-22 22:35:54 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:35:54 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:35:54 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:36:01 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:36:01 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:36:01 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:36:01 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:36:01 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:36:01 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:36:01 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:36:01 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:36:01 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:36:01 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:36:01 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:36:01.164671'}
+2026-01-22 22:36:01 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:36:01 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:36:01.162969'}
+2026-01-22 22:36:23 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:36:23 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:36:23 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:36:28 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:36:28 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:36:28 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:36:28 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:36:28 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:36:28 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:36:28 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:36:28 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:36:28 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:36:28 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:36:28 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:36:28.694278'}
+2026-01-22 22:36:28 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:36:28 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:36:28.692834'}
+2026-01-22 22:37:29 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:37:29 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:37:29.229629'}
+2026-01-22 22:38:29 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:38:29 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:38:29.736042'}
+2026-01-22 22:38:40 - wireguard-backend - INFO - Found 1 pending migration(s)
+2026-01-22 22:38:40 - wireguard-backend - INFO - Running migration: 004_add_users_table.sql
+2026-01-22 22:38:41 - wireguard-backend - INFO - [OK] Migration 004_add_users_table.sql applied successfully
+2026-01-22 22:38:41 - wireguard-backend - INFO - [OK] Successfully applied 1 migration(s)
+2026-01-22 22:39:14 - wireguard-backend - INFO - No pending migrations
+2026-01-22 22:39:30 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:39:30 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:39:30.258433'}
+2026-01-22 22:40:00 - wireguard-backend - INFO - /admin/add-user accessed without auth (ALLOW_NO_AUTH_ADD_USER=true)
+2026-01-22 22:40:06 - wireguard-backend - INFO - /admin/add-user accessed without auth (ALLOW_NO_AUTH_ADD_USER=true)
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Step 1: Getting gidNumber from group wireguard
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Found gidNumber: 2000 from group wireguard
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Got gidNumber: 2000
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Step 2: Checking if user 'zanfuu_admin' already exists
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] User 'zanfuu_admin' does not exist, proceeding with creation
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Step 3: Getting next uidNumber from LDAP
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Max uidNumber found: 1007, next uidNumber: 1008
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Using uid_number: 1008
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Step 4: Creating LDAP user for 'zanfuu_admin'
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Starting user creation for: zanfuu_admin
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Hashing password for user: zanfuu_admin (mode: auto)
+2026-01-22 22:40:06 - wireguard-backend - INFO - [HASH] Trying slappasswd hasher (auto mode)
+2026-01-22 22:40:06 - wireguard-backend - WARNING - [HASH] slappasswd not found on this system, fallback to Python SSHA
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Password hashed successfully (hash length: 38, prefix: {SSHA}/eio...)
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Connecting to server: ldap://117.53.44.59:389
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Connection established successfully
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] Adding user to LDAP: cn=zanfuu_admin,ou=users,dc=wireguard,dc=local
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] User zanfuu_admin added successfully to LDAP
+2026-01-22 22:40:06 - wireguard-backend - INFO - [LDAP] User zanfuu_admin created with uidNumber=1008, gidNumber=2000
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] LDAP user 'zanfuu_admin' created successfully
+2026-01-22 22:40:06 - wireguard-backend - INFO - [ADD-USER] Step 5: Inserting user 'zanfuu_admin' to MySQL
+2026-01-22 22:40:06 - wireguard-backend - INFO - [MySQL] Inserting user 'zanfuu_admin' to MySQL
+2026-01-22 22:40:06 - wireguard-backend - WARNING - [MySQL] Table 'users' does not exist, skipping MySQL insert
+2026-01-22 22:40:06 - wireguard-backend - INFO - [MySQL] User data will be stored only in LDAP
+2026-01-22 22:40:06 - wireguard-backend - INFO - User zanfuu_admin created successfully. LDAP: OK, MySQL: OK
+2026-01-22 22:40:30 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:40:30 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:40:30.754200'}
+2026-01-22 22:41:31 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:41:31 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:41:31.216224'}
+2026-01-22 22:42:10 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:42:10 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:42:10 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:42:16 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:42:16 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:42:16 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:42:16 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:42:16 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:42:16 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:42:16 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:42:16 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:42:16 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:42:16 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:42:17 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:42:16.970819'}
+2026-01-22 22:42:17 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:42:17 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:42:16.967763'}
+2026-01-22 22:43:17 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:43:17 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:43:17.586692'}
+2026-01-22 22:43:22 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:43:22 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:43:22 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:43:28 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:43:28 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:43:28 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:43:28 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:43:28 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:43:28 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:43:28 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:43:28 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:43:28 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:43:28 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:43:28 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:43:28.474420'}
+2026-01-22 22:43:28 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:43:28 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:43:28.471886'}
+2026-01-22 22:43:31 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:31 - wireguard-backend - INFO - Starting LDAP to MySQL users sync...
+2026-01-22 22:43:31 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:31 - wireguard-backend - INFO - [SYNC] Fetching all users from LDAP...
+2026-01-22 22:43:31 - wireguard-backend - INFO - [SYNC] Found 8 users in LDAP
+2026-01-22 22:43:31 - wireguard-backend - INFO - [SYNC] Processing 8 users...
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'zanfuu' with role 'user' to MySQL
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'teshalo' with role 'user' to MySQL
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'testuser1' with role 'user' to MySQL
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'testuser2' with role 'user' to MySQL
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'testuser3' with role 'user' to MySQL
+2026-01-22 22:43:32 - wireguard-backend - INFO - [SYNC] Inserted user 'zanfuu_admin' with role 'user' to MySQL
+2026-01-22 22:43:33 - wireguard-backend - INFO - [SYNC] Inserted user 'zanfuu_testing' with role 'user' to MySQL
+2026-01-22 22:43:33 - wireguard-backend - INFO - [SYNC] Inserted user 'dramadhani' with role 'user' to MySQL
+2026-01-22 22:43:33 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:33 - wireguard-backend - INFO - Sync Summary:
+2026-01-22 22:43:33 - wireguard-backend - INFO -   Total LDAP users: 8
+2026-01-22 22:43:33 - wireguard-backend - INFO -   Synced (new): 8
+2026-01-22 22:43:33 - wireguard-backend - INFO -   Skipped (existing): 0
+2026-01-22 22:43:33 - wireguard-backend - INFO -   Failed: 0
+2026-01-22 22:43:33 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:33 - wireguard-backend - INFO - [SYNC] All users synced successfully!
+2026-01-22 22:43:41 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:41 - wireguard-backend - INFO - Starting LDAP to MySQL users sync...
+2026-01-22 22:43:41 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:41 - wireguard-backend - INFO - [SYNC] Fetching all users from LDAP...
+2026-01-22 22:43:41 - wireguard-backend - INFO - [SYNC] Found 8 users in LDAP
+2026-01-22 22:43:41 - wireguard-backend - INFO - [SYNC] Processing 8 users...
+2026-01-22 22:43:42 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:42 - wireguard-backend - INFO - Sync Summary:
+2026-01-22 22:43:42 - wireguard-backend - INFO -   Total LDAP users: 8
+2026-01-22 22:43:42 - wireguard-backend - INFO -   Synced (new): 0
+2026-01-22 22:43:42 - wireguard-backend - INFO -   Skipped (existing): 8
+2026-01-22 22:43:42 - wireguard-backend - INFO -   Failed: 0
+2026-01-22 22:43:42 - wireguard-backend - INFO - ============================================================
+2026-01-22 22:43:42 - wireguard-backend - INFO - [SYNC] All users synced successfully!
+2026-01-22 22:43:54 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:43:54 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:43:54 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:44:00 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:44:00 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:44:00 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:44:00 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:44:00 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:44:00 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:44:00 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:44:00 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:44:00 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:44:00 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:44:00 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:44:00.291611'}
+2026-01-22 22:44:00 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:44:00 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:44:00.289813'}
+2026-01-22 22:44:00 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:44:00 - wireguard-backend - INFO - Background jobs stopped
+2026-01-22 22:44:00 - wireguard-backend - INFO - LDAP connection pool closed
+2026-01-22 22:44:06 - wireguard-backend - WARNING - Redis connection failed: Error 11001 connecting to redis:6379. getaddrinfo failed.. Rate limiting disabled. This is OK for development.
+2026-01-22 22:44:06 - wireguard-backend - WARNING - To enable rate limiting, start Redis: redis-server
+2026-01-22 22:44:06 - wireguard-backend - INFO - Database connection test successful
+2026-01-22 22:44:06 - wireguard-backend - INFO - Database connection successful
+2026-01-22 22:44:06 - wireguard-backend - INFO - Starting traffic sync job (interval: 60s)
+2026-01-22 22:44:06 - wireguard-backend - INFO - Traffic sync job started
+2026-01-22 22:44:06 - wireguard-backend - INFO - Starting device expiration check job (interval: 1h)
+2026-01-22 22:44:06 - wireguard-backend - INFO - Device expiration check job started
+2026-01-22 22:44:06 - wireguard-backend - INFO - All background jobs started
+2026-01-22 22:44:06 - wireguard-backend - INFO - Background jobs started
+2026-01-22 22:44:06 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:44:06 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:44:06.602004'}
+2026-01-22 22:44:06 - wireguard-backend - INFO - Device expiration check completed: {'checked': 0, 'revoked': 0, 'errors': 0, 'timestamp': '2026-01-22T22:44:06.603351'}
+2026-01-22 22:45:07 - wireguard-backend - INFO - /admin/add-user accessed without auth (ALLOW_NO_AUTH_ADD_USER=true)
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Step 1: Getting gidNumber from group wireguard
+2026-01-22 22:45:07 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:45:07 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:45:07.170055'}
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Found gidNumber: 2000 from group wireguard
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Got gidNumber: 2000
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Step 2: Checking if user 'admin' already exists
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] User 'admin' does not exist, proceeding with creation
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Step 3: Getting next uidNumber from LDAP
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Max uidNumber found: 1008, next uidNumber: 1009
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Using uid_number: 1009
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Step 4: Creating LDAP user for 'admin'
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Starting user creation for: admin
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Hashing password for user: admin (mode: auto)
+2026-01-22 22:45:07 - wireguard-backend - INFO - [HASH] Trying slappasswd hasher (auto mode)
+2026-01-22 22:45:07 - wireguard-backend - WARNING - [HASH] slappasswd not found on this system, fallback to Python SSHA
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Password hashed successfully (hash length: 38, prefix: {SSHA}jTHX...)
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Connecting to server: ldap://117.53.44.59:389
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Connection established successfully
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] Adding user to LDAP: cn=admin,ou=users,dc=wireguard,dc=local
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] User admin added successfully to LDAP
+2026-01-22 22:45:07 - wireguard-backend - INFO - [LDAP] User admin created with uidNumber=1009, gidNumber=2000
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] LDAP user 'admin' created successfully
+2026-01-22 22:45:07 - wireguard-backend - INFO - [ADD-USER] Step 5: Inserting user 'admin' to MySQL
+2026-01-22 22:45:07 - wireguard-backend - INFO - [MySQL] Inserting user 'admin' to MySQL
+2026-01-22 22:45:07 - wireguard-backend - INFO - [MySQL] User 'admin' inserted successfully to MySQL
+2026-01-22 22:45:07 - wireguard-backend - INFO - User admin created successfully. LDAP: OK, MySQL: OK
+2026-01-22 22:46:07 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:46:07 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:46:07.712367'}
+2026-01-22 22:47:08 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:47:08 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:47:08.283179'}
+2026-01-22 22:48:08 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:48:08 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:48:08.829546'}
+2026-01-22 22:49:09 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:49:09 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:49:09.361374'}
+2026-01-22 22:50:09 - wireguard-backend - ERROR - Error parsing WireGuard dump: Command '['sudo', 'wg', 'show', 'wg0', 'dump']' returned non-zero exit status 2147942405.
+2026-01-22 22:50:09 - wireguard-backend - INFO - Traffic sync completed: {'peers_found': 0, 'devices_updated': 0, 'logs_inserted': 0, 'errors': 0, 'timestamp': '2026-01-22T22:50:09.843203'}

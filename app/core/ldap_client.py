@@ -436,8 +436,49 @@ def check_user_in_group(username: str, group_dn: str) -> bool:
 def is_admin(username: str) -> bool:
     """
     Check if user is admin
-    Checks memberOf attribute untuk admin group
+    Check role dari MySQL (tabel users)
+    Authentication tetap di LDAP, tapi authorization (role) dari MySQL
     Cached for 15 minutes
     """
-    admin_group_dn = f"cn=admins,ou=groups,{LDAP_BASE_DN}"
-    return check_user_in_group(username, admin_group_dn)
+    if not username:
+        logger.warning("[IS_ADMIN] Called with empty username")
+        return False
+    
+    try:
+        from app.database.connection import get_db_connection
+        
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            
+            # Cek apakah tabel users ada
+            cursor.execute("""
+                SELECT COUNT(*) as count 
+                FROM information_schema.tables 
+                WHERE table_schema = DATABASE() 
+                AND table_name = 'users'
+            """)
+            table_exists = cursor.fetchone()['count'] > 0
+            
+            if not table_exists:
+                logger.debug(f"[IS_ADMIN] Table 'users' does not exist, user {username} is not admin")
+                return False
+            
+            # Check role dari MySQL
+            cursor.execute("SELECT role FROM users WHERE username = %s", (username,))
+            user = cursor.fetchone()
+            
+            if user and user.get('role') == 'admin':
+                logger.debug(f"[IS_ADMIN] User {username} is admin (role from MySQL)")
+                return True
+            else:
+                role_value = user.get('role') if user else 'not found'
+                logger.debug(f"[IS_ADMIN] User {username} is not admin (role: {role_value})")
+                return False
+                
+    except Exception as e:
+        logger.error(
+            f"[IS_ADMIN ERROR] Error checking admin status for {username}: {e}",
+            exc_info=True
+        )
+        # Jika error, default ke False (lebih aman)
+        return False
