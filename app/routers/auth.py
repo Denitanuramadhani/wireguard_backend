@@ -18,6 +18,41 @@ DEFAULT_WIREGUARD_ENABLED = False
 DEFAULT_MAX_DEVICES = 3
 
 
+@router.get("/me")
+def get_current_user(request: Request):
+    """
+    Get current logged-in user info including role
+    Untuk frontend cek role setelah login atau refresh page
+    
+    Returns:
+    {
+        "status": "ok",
+        "username": "user123",
+        "role": "admin" | "user",
+        "cn": "Full Name",
+        "mail": "email@example.com"
+    }
+    """
+    from app.middleware.auth_middleware import verify_jwt
+    from app.core.ldap_client import is_admin, get_user_attributes
+    
+    username = verify_jwt(request)
+    
+    # Check role
+    user_role = "admin" if is_admin(username) else "user"
+    
+    # Get basic user info from LDAP
+    user_attrs = get_user_attributes(username, ['cn', 'mail'])
+    
+    return {
+        "status": "ok",
+        "username": username,
+        "role": user_role,  # 'admin' atau 'user'
+        "cn": user_attrs.get('cn') if user_attrs else None,
+        "mail": user_attrs.get('mail') if user_attrs else None
+    }
+
+
 def create_jwt(username: str) -> str:
     """
     Create JWT access token (valid 1 hour)
@@ -374,8 +409,11 @@ def login(data: dict, request: Request):
                 detail="Failed to generate authentication tokens. Please try again."
             )
         
+        # Step 3: Check user role (untuk frontend redirect)
+        from app.core.ldap_client import is_admin
+        user_role = "admin" if is_admin(username) else "user"
         logger.info(
-            f"[LOGIN SUCCESS] username={username} wireguardEnabled={wireguard_enabled} "
+            f"[LOGIN SUCCESS] username={username} role={user_role} wireguardEnabled={wireguard_enabled} "
             f"max_devices={max_devices} from IP={client_ip}"
         )
         
@@ -396,6 +434,7 @@ def login(data: dict, request: Request):
                 ldap_uid=username,
                 ip_address=client_ip,
                 details={
+                    "role": user_role,
                     "wireguard_enabled": wireguard_enabled,
                     "max_devices": max_devices
                 }
@@ -405,13 +444,14 @@ def login(data: dict, request: Request):
             logger.error(f"Failed to log audit event for successful login: {audit_error}")
         
         return {
-        "status": "ok",
-        "username": username,
+            "status": "ok",
+            "username": username,
+            "role": user_role,  # 'admin' atau 'user' - untuk frontend redirect
             "access_token": access_token,
             "refresh_token": refresh_token,
-        "wireguard_enabled": wireguard_enabled,
-        "max_devices": max_devices
-    }
+            "wireguard_enabled": wireguard_enabled,
+            "max_devices": max_devices
+        }
         
     except HTTPException as he:
         # #region agent log

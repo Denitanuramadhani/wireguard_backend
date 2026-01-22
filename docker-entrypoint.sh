@@ -1,6 +1,22 @@
 #!/bin/bash
 set -e
 
+# Ensure virtual environment is in PATH
+# Virtual environment sudah di-set di Dockerfile via ENV PATH="/opt/venv/bin:$PATH"
+# Tapi kita pastikan lagi di sini untuk safety
+export PATH="/opt/venv/bin:$PATH"
+
+# Verify Python is using venv (optional check, tidak fatal jika gagal)
+if command -v python >/dev/null 2>&1; then
+    PYTHON_PREFIX=$(python -c "import sys; print(sys.prefix)" 2>/dev/null || echo "unknown")
+    if [ "$PYTHON_PREFIX" != "/opt/venv" ] && [ "$PYTHON_PREFIX" != "unknown" ]; then
+        echo "WARNING: Python prefix is $PYTHON_PREFIX, expected /opt/venv"
+        echo "This might indicate virtual environment is not active"
+    else
+        echo "✓ Virtual environment is active (Python prefix: $PYTHON_PREFIX)"
+    fi
+fi
+
 # Wait for Redis to be available
 wait_for_redis() {
     echo "Waiting for Redis at ${REDIS_HOST:-127.0.0.1}:${REDIS_PORT:-6379}..."
