@@ -81,7 +81,7 @@ def home():
 from app.routers import (
     auth, wg, qr, myaccess, downloads, users, peers,
     admin, admin_add_user, admin_devices, admin_users, admin_monitoring,
-    devices, analytics, health, admin_bandwidth
+    devices, analytics, health, admin_bandwidth, admin_user_management
 )
 
 # Authentication
@@ -101,10 +101,11 @@ app.include_router(peers.router)
 # Admin endpoints
 from app.routers import (
     admin, admin_add_user, admin_devices, admin_users, 
-    admin_monitoring, admin_bandwidth
+    admin_monitoring, admin_bandwidth, admin_user_management
 )
 app.include_router(admin.router)
 app.include_router(admin_add_user.router)
+app.include_router(admin_user_management.router)  # User CRUD operations
 app.include_router(admin_devices.router)  # Admin device management
 app.include_router(admin_users.router)  # Admin user management
 app.include_router(admin_monitoring.router)  # Admin monitoring
