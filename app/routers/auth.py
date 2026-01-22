@@ -9,6 +9,7 @@ from app.core.alert_system import send_alert
 from app.config import JWT_SECRET, JWT_ALGO
 from app.logger import logger
 from app.middleware.auth_middleware import create_refresh_token, verify_refresh_token
+from app.core.login_logger import log_login_success, log_login_failed, log_refresh_token
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -169,6 +170,9 @@ def login(data: dict, request: Request):
     username = None
     client_ip = safe_get_client_ip(request)
     
+    # Get user agent untuk login log
+    user_agent = request.headers.get("User-Agent", "unknown")
+    
     # #region agent log
     try:
         with open(r'c:\wireguard_backend\.cursor\debug.log', 'a', encoding='utf-8') as f:
@@ -190,6 +194,14 @@ def login(data: dict, request: Request):
         
         if not username or not password:
             logger.warning(f"LOGIN FAILED: Missing username or password from IP={client_ip}")
+            log_login_failed(
+                username=username or "unknown",
+                ip_address=client_ip,
+                user_agent=user_agent,
+                error_type="ValidationError",
+                error_message="Missing username or password",
+                reason="missing_credentials"
+            )
             raise HTTPException(
                 status_code=400,
                 detail="Missing username or password"
@@ -198,6 +210,14 @@ def login(data: dict, request: Request):
         # Validate username format (basic validation)
         if not isinstance(username, str) or len(username) == 0:
             logger.warning(f"LOGIN FAILED: Invalid username format from IP={client_ip}")
+            log_login_failed(
+                username=username or "unknown",
+                ip_address=client_ip,
+                user_agent=user_agent,
+                error_type="ValidationError",
+                error_message="Invalid username format",
+                reason="invalid_username_format"
+            )
             raise HTTPException(
                 status_code=400,
                 detail="Invalid username format"
@@ -232,6 +252,17 @@ def login(data: dict, request: Request):
                 f"[LOGIN ERROR] LDAP authentication exception for {username} from IP={client_ip}: {e}",
                 exc_info=True
             )
+            
+            # Log ke login.log
+            log_login_failed(
+                username=username,
+                ip_address=client_ip,
+                user_agent=user_agent,
+                error_type=type(e).__name__,
+                error_message=str(e),
+                reason="ldap_exception"
+            )
+            
             # Log audit untuk failed login karena error
             try:
                 log_audit_event(
@@ -255,21 +286,31 @@ def login(data: dict, request: Request):
         if not auth_result:
             logger.warning(f"[LOGIN FAILED] Invalid credentials for username={username} from IP={client_ip}")
             
-            # Audit log untuk failed login
-            try:
-                log_audit_event(
-                    action="login_failed",
-                    performed_by=username,
-                    ip_address=client_ip,
-                    details={"username": username, "reason": "Invalid credentials"}
-                )
-            except Exception as audit_error:
-                logger.error(f"Failed to log audit event: {audit_error}")
-            
-            raise HTTPException(
-                status_code=401,
-                detail="Invalid username or password"
+            # Log ke login.log
+            log_login_failed(
+                username=username,
+                ip_address=client_ip,
+                user_agent=user_agent,
+                error_type="InvalidCredentials",
+                error_message="Invalid username or password",
+                reason="invalid_credentials"
             )
+        
+        # Audit log untuk failed login
+        try:
+            log_audit_event(
+                action="login_failed",
+                performed_by=username,
+                ip_address=client_ip,
+                details={"username": username, "reason": "Invalid credentials"}
+            )
+        except Exception as audit_error:
+            logger.error(f"Failed to log audit event: {audit_error}")
+        
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid username or password"
+        )
         
         # Step 2: Get WireGuard info (tidak block login jika gagal)
         wireguard_enabled = DEFAULT_WIREGUARD_ENABLED
@@ -360,6 +401,15 @@ def login(data: dict, request: Request):
             f"max_devices={max_devices} from IP={client_ip}"
         )
         
+        # Log ke login.log
+        log_login_success(
+            username=username,
+            ip_address=client_ip,
+            user_agent=user_agent,
+            wireguard_enabled=wireguard_enabled,
+            max_devices=max_devices
+        )
+        
         # Step 4: Audit log untuk successful login
         try:
             log_audit_event(
@@ -377,13 +427,13 @@ def login(data: dict, request: Request):
             logger.error(f"Failed to log audit event for successful login: {audit_error}")
         
         return {
-            "status": "ok",
-            "username": username,
+        "status": "ok",
+        "username": username,
             "access_token": access_token,
             "refresh_token": refresh_token,
-            "wireguard_enabled": wireguard_enabled,
-            "max_devices": max_devices
-        }
+        "wireguard_enabled": wireguard_enabled,
+        "max_devices": max_devices
+    }
         
     except HTTPException as he:
         # #region agent log
@@ -407,6 +457,16 @@ def login(data: dict, request: Request):
             f"[LOGIN CRITICAL ERROR] Unexpected error during login for username={username} "
             f"from IP={client_ip}: {e}",
             exc_info=True
+        )
+        
+        # Log ke login.log
+        log_login_failed(
+            username=username or "unknown",
+            ip_address=client_ip,
+            user_agent=request.headers.get("User-Agent", "unknown") if 'request' in locals() else "unknown",
+            error_type=type(e).__name__,
+            error_message=str(e),
+            reason="unexpected_error"
         )
         
         # Try to log audit event
@@ -437,6 +497,8 @@ def refresh_token_endpoint(data: dict, request: Request):
     Tidak pernah return 500, selalu handle error dengan jelas
     """
     client_ip = safe_get_client_ip(request)
+    user_agent = request.headers.get("User-Agent", "unknown")
+    username = None
     
     try:
         # Validate input
@@ -444,6 +506,13 @@ def refresh_token_endpoint(data: dict, request: Request):
         
         if not refresh_token_value:
             logger.warning(f"[REFRESH] Missing refresh_token from IP={client_ip}")
+            log_refresh_token(
+                username="unknown",
+                ip_address=client_ip,
+                success=False,
+                error_type="ValidationError",
+                error_message="Missing refresh_token"
+            )
             raise HTTPException(
                 status_code=400,
                 detail="Missing refresh_token"
@@ -451,6 +520,13 @@ def refresh_token_endpoint(data: dict, request: Request):
         
         if not isinstance(refresh_token_value, str):
             logger.warning(f"[REFRESH] Invalid refresh_token format from IP={client_ip}")
+            log_refresh_token(
+                username="unknown",
+                ip_address=client_ip,
+                success=False,
+                error_type="ValidationError",
+                error_message="Invalid refresh_token format"
+            )
             raise HTTPException(
                 status_code=400,
                 detail="Invalid refresh_token format"
@@ -459,13 +535,27 @@ def refresh_token_endpoint(data: dict, request: Request):
         # Verify refresh token
         try:
             username = verify_refresh_token(refresh_token_value)
-        except HTTPException:
+        except HTTPException as he:
             # verify_refresh_token sudah raise HTTPException dengan detail yang jelas
+            log_refresh_token(
+                username="unknown",
+                ip_address=client_ip,
+                success=False,
+                error_type="TokenVerificationError",
+                error_message=str(he.detail)
+            )
             raise
         except Exception as e:
             logger.error(
                 f"[REFRESH ERROR] Exception during token verification from IP={client_ip}: {e}",
                 exc_info=True
+            )
+            log_refresh_token(
+                username="unknown",
+                ip_address=client_ip,
+                success=False,
+                error_type=type(e).__name__,
+                error_message=str(e)
             )
             raise HTTPException(
                 status_code=401,
@@ -474,6 +564,13 @@ def refresh_token_endpoint(data: dict, request: Request):
         
         if not username:
             logger.warning(f"[REFRESH] Token verification returned None from IP={client_ip}")
+            log_refresh_token(
+                username="unknown",
+                ip_address=client_ip,
+                success=False,
+                error_type="TokenVerificationError",
+                error_message="Token verification returned None"
+            )
             raise HTTPException(
                 status_code=401,
                 detail="Invalid refresh token"
@@ -484,18 +581,39 @@ def refresh_token_endpoint(data: dict, request: Request):
         # Generate new access token
         try:
             access_token = create_jwt(username)
-        except HTTPException:
+        except HTTPException as he:
             # create_jwt sudah raise HTTPException dengan detail yang jelas
+            log_refresh_token(
+                username=username,
+                ip_address=client_ip,
+                success=False,
+                error_type="JWTGenerationError",
+                error_message=str(he.detail)
+            )
             raise
         except Exception as e:
             logger.error(
                 f"[REFRESH ERROR] Failed to generate access token for {username}: {e}",
                 exc_info=True
             )
+            log_refresh_token(
+                username=username,
+                ip_address=client_ip,
+                success=False,
+                error_type=type(e).__name__,
+                error_message=str(e)
+            )
             raise HTTPException(
                 status_code=500,
                 detail="Failed to generate access token. Please try again."
             )
+        
+        # Log successful refresh
+        log_refresh_token(
+            username=username,
+            ip_address=client_ip,
+            success=True
+        )
         
         return {
             "status": "ok",
@@ -510,6 +628,13 @@ def refresh_token_endpoint(data: dict, request: Request):
         logger.error(
             f"[REFRESH CRITICAL ERROR] Unexpected error during token refresh from IP={client_ip}: {e}",
             exc_info=True
+        )
+        log_refresh_token(
+            username=username or "unknown",
+            ip_address=client_ip,
+            success=False,
+            error_type=type(e).__name__,
+            error_message=str(e)
         )
         raise HTTPException(
             status_code=500,
