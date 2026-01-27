@@ -4,20 +4,23 @@ List active peers dengan info dari MySQL
 """
 
 from datetime import datetime, timedelta
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Request, Depends
 from fastapi_limiter.depends import RateLimiter
+from app.middleware.auth_middleware import verify_jwt
 from app.database.queries import get_device_by_public_key
 from app.logger import logger
 import subprocess
 
-router = APIRouter(prefix="/wg", tags=["WireGuard"])
+router = APIRouter(prefix="/peers", tags=["Peers"])
 
 
-@router.get("/peers", dependencies=[Depends(RateLimiter(times=20, seconds=60))])
-def list_peers():
+@router.get("/", dependencies=[Depends(RateLimiter(times=20, seconds=60))])
+def list_peers(request: Request):
     """
     List active WireGuard peers dengan info dari MySQL
+    User bisa lihat peers mereka sendiri
     """
+    username = verify_jwt(request)
     try:
         result = subprocess.check_output(
             ["sudo", "wg", "show", "wg0", "dump"],
@@ -54,6 +57,10 @@ def list_peers():
             
             # Get device info dari MySQL
             device = get_device_by_public_key(public_key)
+            
+            # Filter: User hanya bisa lihat peers device mereka sendiri
+            if device and device.get('ldap_uid') != username:
+                continue  # Skip peers yang bukan milik user
             
             peer_info = {
                 "public_key": public_key,

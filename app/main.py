@@ -81,7 +81,7 @@ def home():
 from app.routers import (
     auth, wg, qr, myaccess, downloads, users, peers,
     admin, admin_add_user, admin_devices, admin_users, admin_monitoring,
-    devices, analytics, health, admin_bandwidth, admin_user_management
+    devices, analytics, health, admin_bandwidth, admin_user_management, monitoring
 )
 
 # Authentication
@@ -89,9 +89,10 @@ from app.routers import auth
 app.include_router(auth.router)
 
 # User endpoints
-from app.routers import devices, myaccess, downloads, users, peers, analytics
+from app.routers import devices, myaccess, downloads, users, peers, analytics, monitoring
 app.include_router(devices.router)  # Device management
 app.include_router(analytics.router)  # Analytics & traffic monitoring
+app.include_router(monitoring.router)  # User monitoring (audit logs, devices)
 app.include_router(myaccess.router)
 app.include_router(downloads.router)
 app.include_router(users.router)
